@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SafeLock CyberTech Solutions – Cybersecurity, Development &amp; Training</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap">
+<style>
+:root{--bg:#050b1a;--bg2:#0a1430;--card:rgba(18,30,64,.72);--fg:#eaf1ff;--muted:#9fb0d0;--line:rgba(120,150,255,.22);--cyan:#22d3ee;--violet:#8b5cf6;--blue:#3b82f6;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Inter,"Noto Sans Devanagari",system-ui,sans-serif;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right));overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(800px 500px at 85% -5%,rgba(139,92,246,.28),transparent 60%),radial-gradient(700px 500px at -5% 25%,rgba(34,211,238,.16),transparent 60%),linear-gradient(var(--bg),var(--bg2))}
+h1,h2,h3{font-family:"Space Grotesk",Inter,"Noto Sans Devanagari",sans-serif;line-height:1.15;margin:.3em 0 .5em;text-wrap:balance}
+h1{font-size:clamp(2.1rem,5.4vw,3.8rem)}h2{font-size:clamp(1.5rem,3vw,2.2rem)}h3{font-size:1.1rem}
+p{margin:.5em 0 1em}a{color:var(--cyan)}
+.wrap{max-width:1160px;margin:0 auto}.muted{color:var(--muted)}.sec{padding-block:56px}
+.grad{background:linear-gradient(90deg,var(--cyan),var(--blue),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+header{position:sticky;top:0;z-index:30;background:rgba(5,11,26,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin:0 calc(-1*max(16px,env(safe-area-inset-left)))}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px}
+.brand{display:flex;align-items:center;gap:8px;font:700 1.2rem "Space Grotesk",sans-serif;color:var(--fg);text-decoration:none}
+.brand svg{width:26px;height:26px}
+nav{display:flex;gap:2px;flex-wrap:wrap}
+nav a{color:var(--fg);text-decoration:none;padding:7px 10px;border-radius:8px;font-size:.93rem;opacity:.85}
+nav a:hover{background:rgba(255,255,255,.08);opacity:1}
+.btn{display:inline-block;padding:12px 20px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--fg);font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn:hover{border-color:var(--cyan)}
+.btn.primary{background:linear-gradient(90deg,var(--cyan),var(--blue) 55%,var(--violet));color:#03101f;border:0;box-shadow:0 8px 28px rgba(59,130,246,.35)}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.78rem;font-weight:700;color:var(--cyan);margin:0 0 8px}
+.hero{padding-block:64px 40px}
+.hero .cols{display:grid;gap:32px;grid-template-columns:1.15fr .85fr;align-items:center}
+.hero .lead{color:var(--muted);font-size:1.15rem;max-width:620px}
+.shield{width:100%;max-width:380px;margin:0 auto;display:block;filter:drop-shadow(0 0 40px rgba(59,130,246,.5));animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+.quick{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));margin-top:30px}
+.quick button{text-align:left;font:inherit;cursor:pointer;background:var(--card);border:1px solid var(--line);color:var(--fg);border-radius:14px;padding:14px;transition:.2s}
+.quick button:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.stats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:36px}
+.stat{border-top:2px solid var(--blue);padding-top:8px}.stat b{font:700 1.5rem "Space Grotesk";display:block}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;min-width:0;backdrop-filter:blur(6px);transition:.25s}
+.grid>.card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.card ul,.card ol{margin:.4em 0 0;padding-left:1.2rem}.card li{margin:.25rem 0}
+.ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(34,211,238,.22),rgba(139,92,246,.28));margin-bottom:10px;font-size:1.3rem}
+details{border-bottom:1px solid var(--line);padding:12px 0}details:last-child{border-bottom:0}
+summary{cursor:pointer;font-weight:600;list-style:none}summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--cyan);font-size:1.3rem;line-height:1}details[open] summary::after{content:"−"}
+.urgent{background:var(--card);border-left:4px solid #f59e0b;padding:14px 18px;border-radius:12px;margin:0 0 22px}
+form{display:grid;gap:12px}label{display:grid;gap:5px;font-weight:600;font-size:.95rem;min-width:0}
+input,select,textarea{font:inherit;font-weight:400;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(5,11,26,.7);color:var(--fg);width:100%;min-width:0}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.hp{position:absolute;left:-9999px}
+.copy{font-size:.82rem;padding:3px 9px;margin-left:6px;border-radius:8px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding-block:26px;color:var(--muted);font-size:.92rem}
+.steps{counter-reset:s}.steps .card{position:relative;padding-top:34px}
+.steps .card::before{counter-increment:s;content:"0" counter(s);position:absolute;top:10px;right:16px;font:700 1.4rem "Space Grotesk";color:rgba(139,92,246,.6)}
+/* ===== iPhone liquid-glass layer ===== */
+.blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;opacity:.5;pointer-events:none;contain:paint}
+.blob{position:absolute;width:38vmax;height:38vmax;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.85),rgba(59,130,246,.45) 45%,transparent 70%);animation:drift 26s ease-in-out infinite alternate;will-change:transform;transform:translate3d(0,0,0)}
+.blob.b1{left:-10vmax;top:5vh}.blob.b2{right:-12vmax;top:-8vmax;background:radial-gradient(circle,rgba(139,92,246,.85),rgba(59,130,246,.45) 45%,transparent 70%);animation-duration:31s}
+.blob.b3{left:30vw;bottom:-18vmax;width:30vmax;height:30vmax;background:radial-gradient(circle,rgba(6,182,212,.8),rgba(139,92,246,.45) 45%,transparent 70%);animation-duration:23s}
+@keyframes drift{to{transform:translate3d(12vw,10vh,0) scale(1.15)}}
+.card,.glass{background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.2);border-radius:26px;backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -1px 0 rgba(255,255,255,.06),inset 0 0 22px rgba(255,255,255,.04),0 14px 44px rgba(0,0,0,.38);position:relative;overflow:hidden}
+.card::after,.glass::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.2),transparent 60%)}
+.card:hover::after,.glass:hover::after{opacity:1}
+header{background:rgba(8,16,38,.55);backdrop-filter:blur(18px) saturate(170%);-webkit-backdrop-filter:blur(18px) saturate(170%);box-shadow:inset 0 -1px 0 rgba(255,255,255,.12)}
+nav a{border-radius:999px;transition:.25s}nav a:hover{background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.btn,.quick button,.chips button{position:relative;overflow:hidden;border-radius:999px;background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 6px 18px rgba(0,0,0,.3);transition:transform .25s cubic-bezier(.3,1.6,.5,1),border-color .2s}
+.btn:hover,.quick button:hover{transform:translateY(-2px) scale(1.03)}.btn:active{transform:scale(.96)}
+.quick button{border-radius:22px}
+.btn.primary{background:linear-gradient(135deg,rgba(34,211,238,.95),rgba(59,130,246,.95) 55%,rgba(139,92,246,.95));color:#03101f;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 10px 30px rgba(59,130,246,.45)}
+.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.45);transform:scale(0);animation:rip .7s ease-out forwards;pointer-events:none}@keyframes rip{to{transform:scale(1);opacity:0}}
+input,select,textarea{border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 2px 8px rgba(0,0,0,.25)}
+.ico{border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+#chat{background:rgba(10,20,48,.7);backdrop-filter:blur(30px) saturate(190%);-webkit-backdrop-filter:blur(30px) saturate(190%);border:1px solid rgba(255,255,255,.22);border-radius:28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 24px 60px rgba(0,0,0,.6)}
+#chatHead{background:linear-gradient(90deg,rgba(14,42,94,.8),rgba(59,29,130,.8))}
+.msg{border-radius:20px}
+#chatBtn{box-shadow:inset 0 2px 0 rgba(255,255,255,.5),0 10px 30px rgba(59,130,246,.55)}
+/* ===== dashboard ===== */
+.dash{display:grid;gap:18px;grid-template-columns:repeat(12,1fr)}
+.s4{grid-column:span 4}.s8{grid-column:span 8}.s12{grid-column:span 12}.s6{grid-column:span 6}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;padding:4px 11px;border-radius:999px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.5);color:#fbbf24}
+.dh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.dh h3{margin:0}
+.robot{display:block;width:160px;margin:4px auto 6px;filter:drop-shadow(0 0 24px rgba(34,211,238,.5));animation:float 5s ease-in-out infinite}
+.pupil{transition:transform .12s}
+.status{text-align:center;font:600 .95rem "Space Grotesk"}.status i{display:inline-block;width:9px;height:9px;border-radius:50%;background:#22c55e;margin-right:6px;box-shadow:0 0 10px #22c55e;animation:pulse2 1.4s infinite}
+@keyframes pulse2{50%{opacity:.35}}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:12px}.bar b{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--violet));transition:width .1s}
+.radar{position:relative;width:min(100%,280px);aspect-ratio:1;margin:0 auto;border-radius:50%;border:1px solid rgba(34,211,238,.5);background:repeating-radial-gradient(circle,transparent 0 22px,rgba(34,211,238,.22) 23px 24px),linear-gradient(rgba(34,211,238,.18),rgba(34,211,238,.18)) center/1px 100% no-repeat,linear-gradient(rgba(34,211,238,.18),rgba(34,211,238,.18)) center/100% 1px no-repeat,radial-gradient(circle,rgba(34,211,238,.1),rgba(5,11,26,.6));box-shadow:inset 0 0 40px rgba(34,211,238,.2),0 0 40px rgba(34,211,238,.15);overflow:hidden}
+.radar::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(34,211,238,.6),transparent 28%);animation:spin 4s linear infinite}
+.radar.fast::before{animation-duration:1s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.blip{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:0;padding:0;cursor:pointer;background:var(--c);box-shadow:0 0 12px var(--c);animation:blip 2.4s infinite}
+.blip::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--c);animation:ping 2.4s infinite}
+.blip.sel{outline:2px solid #fff;outline-offset:3px}
+@keyframes blip{50%{transform:scale(1.25)}}@keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.8);opacity:0}}
+.gauge{position:relative;width:150px;height:150px;margin:0 auto 10px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.35);background:rgba(5,11,26,.55);box-shadow:inset 0 0 24px rgba(0,0,0,.5),0 0 30px rgba(139,92,246,.3)}
+.wave{position:absolute;left:-50%;width:200%;height:200%;top:var(--lvl,60%);border-radius:42%;background:rgba(34,211,238,.55);animation:spin 7s linear infinite;transition:top 1.2s ease}
+.wave.w2{background:rgba(139,92,246,.45);border-radius:38%;animation-duration:11s}
+.gauge span{position:absolute;inset:0;display:grid;place-items:center;font:700 2rem "Space Grotesk";text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.kpi{border-radius:18px;padding:10px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)}.kpi b{display:block;font:700 1.5rem "Space Grotesk"}.kpi small{color:var(--muted)}
+.chips2{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chips2 button{font:inherit;font-size:.82rem;color:var(--fg);border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chips2 button.on{background:linear-gradient(135deg,var(--cyan),var(--violet));color:#03101f;border-color:transparent;font-weight:700}
+.rows{display:grid;gap:6px;max-height:330px;overflow:auto;padding-right:2px}
+.row{display:grid;grid-template-columns:70px 1fr auto auto;gap:10px;align-items:center;text-align:left;font:inherit;font-size:.9rem;color:var(--fg);padding:9px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);cursor:pointer;transition:.2s}
+.row:hover,.row.sel{background:rgba(255,255,255,.13);border-color:var(--cyan)}
+.row code{color:var(--cyan);font-size:.82rem}
+.pill{font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;border:1px solid var(--c);color:var(--c);white-space:nowrap}
+.detail{font-size:.93rem}.detail h4{margin:0 0 6px;font:700 1.05rem "Space Grotesk"}
+.feed{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:.86rem}
+.feed li{padding:8px 11px;border-radius:14px;background:rgba(255,255,255,.06);border-left:3px solid var(--c);animation:slide .5s ease}
+@keyframes slide{from{opacity:0;transform:translateY(-10px)}}
+.feed time{color:var(--muted);font-size:.74rem;display:block}
+.chart{display:grid;gap:10px}.crow{display:grid;grid-template-columns:150px 1fr 28px;gap:10px;align-items:center;font-size:.88rem}
+.track{height:16px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--violet),var(--cyan));background-size:200% 100%;animation:shine 3s linear infinite;transition:width 1.2s cubic-bezier(.2,1.3,.4,1);box-shadow:0 0 14px rgba(59,130,246,.6)}
+@keyframes shine{to{background-position:-200% 0}}
+@media (max-width:900px){.s4,.s6,.s8{grid-column:span 12}.crow{grid-template-columns:110px 1fr 24px}.row{grid-template-columns:62px 1fr auto}.row .pill:last-child{display:none}}
+/* robot chatbot */
+#chatBtn{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:50;width:68px;height:68px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,var(--cyan),var(--violet));box-shadow:0 8px 28px rgba(59,130,246,.55);display:grid;place-items:center;animation:pulse 2.4s infinite}
+#chatBtn svg{width:42px;height:42px}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,211,238,.55)}70%{box-shadow:0 0 0 18px rgba(34,211,238,0)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}}
+.eye{animation:blink 4s infinite;transform-origin:center;transform-box:fill-box}@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+#chat{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:calc(max(16px,env(safe-area-inset-bottom)) + 80px);width:min(390px,calc(100vw - 32px));height:min(560px,72vh);background:#0b1633;border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.6);display:none;flex-direction:column;z-index:50;overflow:hidden}
+#chat.open{display:flex;animation:pop .3s ease}@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}}
+#chatHead{background:linear-gradient(90deg,#0e2a5e,#3b1d82);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+#chatHead small{display:block;color:#b8c7e8;font-size:.78rem}
+#chatHead button{background:none;border:0;color:#fff;font-size:1.2rem;cursor:pointer}
+#log{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;padding:9px 12px;border-radius:14px;white-space:pre-wrap;font-size:.94rem;word-wrap:break-word}
+.bot{background:rgba(255,255,255,.07);border:1px solid var(--line);align-self:flex-start}
+.me{background:linear-gradient(90deg,var(--blue),var(--violet));color:#fff;align-self:flex-end}
+.msg a{color:var(--cyan);font-weight:600}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 8px}
+.chips button{font:inherit;font-size:.82rem;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--fg);border-radius:999px;padding:5px 11px;cursor:pointer}
+.chips button:hover{border-color:var(--cyan)}
+#chatForm{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}#chatForm input{flex:1}
+#chatForm button{background:var(--cyan);color:#03101f;border:0;border-radius:10px;padding:0 14px;font:inherit;font-weight:700;cursor:pointer}
+@media (max-width:820px){.hero .cols{grid-template-columns:1fr}.shield{max-width:240px;order:-1}header .wrap{flex-direction:column;align-items:flex-start}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+
+/* ===== high-refresh-rate (120/144 Hz) tuning: animate transform/opacity only ===== */
+.card{transition:transform .25s ease,border-color .25s ease}
+.bar b{width:100%;transform:scaleX(0);transform-origin:0 50%;transition:none;will-change:transform}
+.fill{animation:none;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--violet));position:relative;overflow:hidden}
+.fill::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-100%);animation:sheen 2.6s linear infinite}
+@keyframes sheen{to{transform:translateX(100%)}}
+.wave,.radar::before,.shield,.robot{will-change:transform}
+@media (max-width:820px),(pointer:coarse){
+.card,.glass{backdrop-filter:blur(10px) saturate(150%);-webkit-backdrop-filter:blur(10px) saturate(150%)}
+header{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+#chat{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+}
+
+/* ===== language switcher ===== */
+.lang{display:flex;gap:3px;padding:3px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07)}
+.lang button{font:inherit;font-size:.85rem;font-weight:600;color:var(--fg);background:none;border:0;border-radius:999px;padding:5px 12px;cursor:pointer;transition:background .2s}
+.lang button:hover{background:rgba(255,255,255,.12)}
+.lang button[aria-pressed=true]{background:linear-gradient(135deg,var(--cyan),var(--violet));color:#03101f}
+html[lang=hi] h1,html[lang=mr] h1,html[lang=hi] h2,html[lang=mr] h2,html[lang=hi] h3,html[lang=mr] h3{line-height:1.35}
+html[lang=hi] .eyebrow,html[lang=mr] .eyebrow{letter-spacing:0;text-transform:none}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset=".55" stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
+</defs></svg>
+<div class="blobs" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+
+<header><div class="wrap">
+  <a class="brand" href="#top"><svg viewBox="0 0 32 32"><path d="M16 2 4 7v8c0 7.5 5 13 12 15 7-2 12-7.500 12-15V7z" fill="url(#g)"/><rect x="11" y="14" width="10" height="8" rx="1.500" fill="#050b1a"/><path d="M13 14v-2.500a3 3 0 0 1 6 0V14" fill="none" stroke="#050b1a" stroke-width="2"/></svg>SafeLock <span class="grad">CyberTech</span></a>
+  <nav aria-label="Main"><a href="#about">About</a><a href="#help">Help Centre</a><a href="#services">Services</a><a href="#dashboard">Dashboard</a><a href="#why">Why us</a><a href="#training">Training</a><a href="#resources">Resources</a><a href="#team">Team</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">English</button><button type="button" data-lang="hi" aria-pressed="false">हिन्दी</button><button type="button" data-lang="mr" aria-pressed="false">मराठी</button></div>
+</div></header>
+
+<main>
+<section class="hero" id="top"><div class="wrap cols">
+  <div>
+    <p class="eyebrow">Cybersecurity • Development • Innovation</p>
+    <h1>Secure Your Digital World With <span class="grad">SafeLock</span></h1>
+    <p class="lead">Smart cybersecurity and innovative software solutions for a safer digital future. Free first-step help with hacking, scams and online threats, plus a security team when you need hands-on support.</p>
+    <div class="btns">
+      <a class="btn primary" href="#services">Explore Services</a>
+      <a class="btn" href="#contact">Contact Us</a>
+      <button class="btn" data-open-chat="I think my account has been hacked">Get help now</button>
+    </div>
+    <div class="quick" aria-label="Quick help">
+      <button data-open-chat="My account has been hacked">🔓 You have been hacked</button>
+      <button data-open-chat="I have been scammed or lost money">💸 You have been scammed</button>
+      <button data-open-chat="I am being harassed or stalked online">🚫 Harassed or stalked</button>
+      <button data-open-chat="I am getting suspicious messages or calls">⚠️ Suspicious messages</button>
+    </div>
+  </div>
+  <svg class="shield" viewBox="0 0 300 340" role="img" aria-label="Digital shield with lock and connected devices">
+    <g fill="none" stroke="url(#g)" stroke-width="1.500" opacity=".55"><circle cx="150" cy="170" r="140" stroke-dasharray="3 7"/><circle cx="150" cy="170" r="112"/></g>
+    <path d="M150 40 70 72v82c0 56 34 96 80 112 46-16 80-56 80-112V72z" fill="url(#g)" opacity=".18" stroke="url(#g)" stroke-width="3"/>
+    <path d="M150 62 88 87v67c0 44 26 76 62 90 36-14 62-46 62-90V87z" fill="#071228" stroke="url(#g)" stroke-width="2"/>
+    <rect x="118" y="150" width="64" height="52" rx="8" fill="url(#g)"/><path d="M131 150v-14a19 19 0 0 1 38 0v14" fill="none" stroke="url(#g)" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="150" cy="172" r="6" fill="#050b1a"/><rect x="147" y="175" width="6" height="14" rx="3" fill="#050b1a"/>
+    <g fill="#22d3ee"><circle cx="30" cy="110" r="6"/><circle cx="272" cy="130" r="6"/><circle cx="48" cy="262" r="6"/><circle cx="258" cy="252" r="6"/></g>
+    <g stroke="#22d3ee" stroke-width="1.200" opacity=".6"><path d="M30 110 88 130M272 130 212 140M48 262 100 232M258 252 200 232"/></g>
+  </svg>
+</div>
+<div class="wrap"><div class="stats">
+  <div class="stat"><b class="grad">6</b><span class="muted">Service areas</span></div>
+  <div class="stat"><b class="grad">24/7</b><span class="muted">Incident support*</span></div>
+  <div class="stat"><b class="grad">4–6 wk</b><span class="muted">Live-project internships</span></div>
+  <div class="stat"><b class="grad">Pune</b><span class="muted">Pimpri-Chinchwad office</span></div>
+</div><p class="muted" style="font-size:.8rem;margin-top:8px">*As listed in our company profile.</p></div>
+</section>
+
+<section class="sec" id="about"><div class="wrap grid">
+  <div class="card"><p class="eyebrow">Who we are</p><h2>Technology you can trust</h2><p class="muted">SafeLock CyberTech Solutions is a technology-focused company providing cybersecurity, software development and IT solutions. We help businesses and individuals improve digital security, build modern software and develop practical technical skills through professional training.</p></div>
+  <div class="card"><div class="ico">🎯</div><h3>Our mission</h3><p class="muted">To deliver reliable technology solutions, strengthen digital security and empower the next generation of IT professionals.</p>
+    <div class="ico">🔭</div><h3>Our vision</h3><p class="muted" style="margin-bottom:0">To become a trusted technology partner for secure digital transformation and innovation.</p></div>
+</div></section>
+
+<section class="sec" id="help"><div class="wrap">
+  <p class="eyebrow">Free first-step help</p><h2>Cyber Help Centre</h2>
+  <p class="muted">Choose the problem that matches yours. Each topic gives first steps you can take now.</p>
+  <div class="urgent"><strong>Urgent?</strong> If someone is in immediate danger, call <strong>112</strong>. For financial fraud in India, call <strong>1930</strong> and report at <strong>cybercrime.gov.in</strong> as early as possible.</div>
+  <div class="grid">
+    <div class="card"><details open><summary>I think my account has been hacked</summary><ol><li>Change the password from a device you trust.</li><li>Sign out of all other sessions in the account's security settings.</li><li>Turn on multi-factor authentication.</li><li>Remove forwarding rules and recovery details you do not recognise.</li></ol></details></div>
+    <div class="card"><details><summary>I have been scammed or lost money</summary><ol><li>Call your bank now and ask them to block or freeze the transaction.</li><li>Report at cybercrime.gov.in or call 1930 as soon as possible.</li><li>Keep screenshots, transaction IDs and chat logs.</li><li>Do not pay anyone to "recover" the money.</li></ol></details></div>
+    <div class="card"><details><summary>I am getting suspicious messages or calls</summary><ol><li>Do not click links, download attachments or call back the number.</li><li>Check with the organisation through its official app or website.</li><li>Save a copy as evidence, then block and report the sender.</li></ol></details></div>
+    <div class="card"><details><summary>I am being harassed or stalked online</summary><ol><li>Save evidence: screenshots with dates, links and usernames.</li><li>Use the platform's report and block tools.</li><li>Avoid confronting the person, which can escalate things.</li><li>Report at cybercrime.gov.in or 1930. In danger? Call 112.</li></ol></details></div>
+    <div class="card"><details><summary>My device has malware or I am being extorted</summary><ol><li>Disconnect the device from the internet and Wi-Fi.</li><li>Do not pay the ransom.</li><li>Scan from another device and consult a professional.</li><li>Report at cybercrime.gov.in or 1930.</li></ol></details></div>
+    <div class="card"><details><summary>My data may have leaked or I lost a device</summary><ol><li>Remotely lock or erase the device using its official tracking service.</li><li>Change passwords for accounts used on it.</li><li>Watch your accounts and bank activity for anything unusual.</li></ol></details></div>
+  </div>
+  <div class="card" style="margin-top:22px"><h3>Never share these with anyone</h3><p class="muted" style="margin:0">OTP, UPI PIN, ATM or card PIN, CVV or passwords. Genuine banks, government agencies and service providers never ask for them.</p></div>
+</div></section>
+
+<section class="sec" id="services"><div class="wrap">
+  <p class="eyebrow">What we do</p><h2>Our services</h2>
+  <div class="grid">
+    <div class="card"><div class="ico">🛡️</div><h3>Cybersecurity &amp; Compliance</h3><ul><li>VAPT and security audits</li><li>Risk assessments</li><li>Data protection and regulatory compliance</li><li>OT security</li></ul></div>
+    <div class="card"><div class="ico">📡</div><h3>Managed Security</h3><ul><li>24/7 threat monitoring</li><li>Endpoint and network security</li><li>Data encryption and cloud security</li></ul></div>
+    <div class="card"><div class="ico">🔎</div><h3>Incident Response &amp; Forensics</h3><ul><li>Cyber forensic investigations</li><li>Data recovery and e-discovery</li><li>Online cyber fraud investigation</li></ul></div>
+    <div class="card"><div class="ico">⛓️</div><h3>Blockchain &amp; Crypto Security</h3><ul><li>Smart contract audits</li><li>Cryptographic protection</li><li>Transaction monitoring</li></ul></div>
+    <div class="card"><div class="ico">💻</div><h3>Custom Software &amp; Web</h3><ul><li>Secure web applications</li><li>Mobile apps</li><li>Enterprise platforms</li></ul></div>
+    <div class="card"><div class="ico">🏠</div><h3>Residential &amp; Physical Security</h3><ul><li>Residential cyber protection</li><li>CCTV surveillance</li><li>Smart home integrations</li></ul></div>
+  </div>
+</div></section>
+
+<section class="sec" id="dashboard"><div class="wrap">
+  <p class="eyebrow">Cyber Fraud Command Centre</p>
+  <div class="dh"><h2 style="margin:0">Fraud case dashboard</h2><span class="badge">● Demo data, not real cases</span></div>
+  <p class="muted">A preview of the case-tracking view our team can use, guarded by SENTINEL, our robot scanner. Click a radar blip or a case to see the recommended next step.</p>
+  <div class="dash">
+    <div class="glass card s4">
+      <div class="dh"><h3>SENTINEL-01</h3><span class="muted" style="font-size:.8rem">Robot scanner</span></div>
+      <svg class="robot" id="robot" viewBox="0 0 160 170" role="img" aria-label="Robot scanner mascot">
+        <line x1="80" y1="6" x2="80" y2="26" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/><circle cx="80" cy="8" r="6" fill="#22d3ee"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle>
+        <rect x="22" y="26" width="116" height="84" rx="30" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
+        <rect x="34" y="38" width="92" height="58" rx="22" fill="#071228"/>
+        <g id="eyes"><circle cx="58" cy="67" r="13" fill="#0e2a5e"/><circle cx="102" cy="67" r="13" fill="#0e2a5e"/><circle class="pupil" id="p1" cx="58" cy="67" r="7" fill="#22d3ee"/><circle class="pupil" id="p2" cx="102" cy="67" r="7" fill="#22d3ee"/></g>
+        <rect x="6" y="52" width="14" height="28" rx="7" fill="url(#g)"/><rect x="140" y="52" width="14" height="28" rx="7" fill="url(#g)"/>
+        <rect x="46" y="118" width="68" height="42" rx="16" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.5)" stroke-width="2"/><circle cx="80" cy="139" r="8" fill="url(#g)"/>
+      </svg>
+      <div class="status"><i></i><span id="stText">Standby</span></div>
+      <div class="bar"><b id="scanBar"></b></div>
+      <div class="btns" style="justify-content:center"><button class="btn primary" id="scanBtn" type="button">Run demo scan</button></div>
+    </div>
+    <div class="glass card s4">
+      <div class="dh"><h3>Threat radar</h3><span class="muted" style="font-size:.8rem">Open cases</span></div>
+      <div class="radar" id="radar" role="group" aria-label="Radar of open cases"></div>
+    </div>
+    <div class="glass card s4">
+      <div class="dh"><h3>Threat level</h3><span class="muted" style="font-size:.8rem">From open cases</span></div>
+      <div class="gauge" id="gauge"><div class="wave w2"></div><div class="wave"></div><span id="gv">0%</span></div>
+      <div class="kpis"><div class="kpi"><b id="k1">0</b><small>Total cases</small></div><div class="kpi"><b id="k2">0</b><small>Open</small></div><div class="kpi"><b id="k3">0</b><small>Critical / high open</small></div><div class="kpi"><b id="k4">0</b><small>Resolved</small></div></div>
+    </div>
+    <div class="glass card s8">
+      <div class="dh"><h3>Fraud case tracker</h3></div>
+      <div class="chips2" id="filters" role="group" aria-label="Filter cases"></div>
+      <div class="rows" id="rows"></div>
+    </div>
+    <div class="glass card s4">
+      <div class="dh"><h3>Case detail</h3></div>
+      <div class="detail" id="detail"></div>
+      <div class="dh" style="margin-top:16px"><h3>Live feed</h3><span class="muted" style="font-size:.78rem">Simulated</span></div>
+      <ul class="feed" id="feed" aria-live="off"></ul>
+    </div>
+    <div class="glass card s12">
+      <div class="dh"><h3>Cases by fraud type</h3></div>
+      <div class="chart" id="chart"></div>
+    </div>
+  </div>
+  <p class="muted" style="font-size:.82rem;margin-top:12px">All figures above are sample data for design purposes. Real case data would need a secure backend with logins and privacy controls.</p>
+</div></section>
+
+<section class="sec" id="why"><div class="wrap">
+  <p class="eyebrow">Why choose SafeLock?</p><h2>Security built into everything we make</h2>
+  <div class="grid steps">
+    <div class="card"><h3>Security-first development</h3><p class="muted">Web and mobile products are built with protection in mind from day one, not added at the end.</p></div>
+    <div class="card"><h3>Hands-on expertise</h3><p class="muted">Cyber experts and developers under one roof: audit, build, monitor and respond.</p></div>
+    <div class="card"><h3>Plain-language guidance</h3><p class="muted">Clear steps for everyday users and clear reports for businesses, without jargon.</p></div>
+    <div class="card"><h3>Local and reachable</h3><p class="muted">Based in Pimpri-Chinchwad, Pune, and reachable by phone, WhatsApp or in person.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="training"><div class="wrap">
+  <p class="eyebrow">Learn with us</p><h2>Training, internships &amp; careers</h2>
+  <div class="grid">
+    <div class="card"><div class="ico">🎓</div><h3>Corporate security awareness</h3><p class="muted">Customised workshops that help your team recognise phishing and social engineering.</p></div>
+    <div class="card"><div class="ico">🧪</div><h3>Student internships</h3><p class="muted">Practical 4–6 week internships in cybersecurity and software development, with live project exposure. Open to students from all disciplines.</p></div>
+    <div class="card"><div class="ico">🚀</div><h3>Careers</h3><p class="muted">We hire security analysts, penetration testers, forensic investigators and full-stack developers. Send your CV through the form below.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="resources"><div class="wrap">
+  <p class="eyebrow">Resources</p><h2>Cyber safety guides</h2>
+  <div class="grid">
+    <div class="card"><h3>Strong passwords</h3><p class="muted">Use a long passphrase or a password manager, and never reuse a password across sites.</p></div>
+    <div class="card"><h3>Multi-factor authentication</h3><p class="muted">Add a second step to email, banking and social accounts. App-based codes are stronger than SMS.</p></div>
+    <div class="card"><h3>Spotting phishing</h3><p class="muted">Be wary of urgency, threats and links that do not match the sender. Visit the official site yourself.</p></div>
+    <div class="card"><h3>Updates and backups</h3><p class="muted">Turn on automatic updates. Keep three copies of important data on two media types, one offline or off-site.</p></div>
+    <div class="card"><h3>Privacy settings</h3><p class="muted">Review app permissions, limit public sharing and turn off location sharing you do not need.</p></div>
+    <div class="card"><h3>Public Wi-Fi and payments</h3><p class="muted">Avoid banking on open networks. Verify payment requests and QR codes through a separate, known channel.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="faq"><div class="wrap">
+  <h2>Frequently asked questions</h2>
+  <div class="card">
+    <details><summary>Is this help free?</summary><p class="muted">The guidance on this page is free. Investigation and security services are quoted separately.</p></details>
+    <details><summary>Is the assistant a real person?</summary><p class="muted">No. The robot assistant gives set answers to common problems. For a specific case, send an enquiry or call our team.</p></details>
+    <details><summary>Can you help if I have been scammed?</summary><p class="muted">Yes, we can advise and investigate. Contact your bank first, then report at cybercrime.gov.in or call 1930.</p></details>
+    <details><summary>When are you available?</summary><p class="muted">Monday to Saturday 9:00 AM – 10:00 PM, and Sunday 9:00 AM – 7:00 PM. Incident support is listed as 24/7 in our company profile.</p></details>
+  </div>
+</div></section>
+
+<section class="sec" id="team"><div class="wrap">
+  <h2>Our team</h2>
+  <div class="grid">
+    <div class="card"><div class="ico">👨‍💻</div><h3>Mr. Vipul Wagh</h3><p class="muted" style="margin:0">Tech Leader / Tech Supporter</p></div>
+    <div class="card"><div class="ico">🕵️</div><h3>Mr. Sagar Indore</h3><p class="muted" style="margin:0">Cyber Expert</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="contact"><div class="wrap grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))">
+  <div class="card">
+    <h2>Contact SafeLock</h2>
+    <p><strong>Office</strong><br>Office No. 4, Mayuri Palace, 19/2, Above SBI Bank, Onkar Colony, Yashoda Colony, Dange Chowk, Pimpri-Chinchwad, Pune, Maharashtra 411033</p>
+    <p><strong>Phone / WhatsApp</strong><br>+91 99231 09816 <button class="btn copy" data-copy="+91 99231 09816">Copy</button></p>
+    <p><strong>Email</strong><br>info@safelocktech.com <button class="btn copy" data-copy="info@safelocktech.com">Copy</button></p>
+    <p><strong>Hours</strong><br>Mon–Sat 9:00 AM – 10:00 PM · Sun 9:00 AM – 7:00 PM</p>
+    <div class="btns" style="margin-top:6px"><a class="btn primary" href="https://wa.me/919923109816" target="_blank" rel="noopener">WhatsApp us</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=SafeLock+CyberTech+Dange+Chowk+Pimpri-Chinchwad" target="_blank" rel="noopener">View on Google Maps</a></div>
+    <p class="muted" style="font-size:.88rem;margin-top:16px">CIN U80300PN2023PTC223054 · www.safelocktech.com</p>
+  </div>
+  <div class="card">
+    <h2>Send an enquiry</h2>
+    <p class="muted">Fill in the form and press the button. WhatsApp opens automatically with your details filled in.</p>
+    <form id="enq" novalidate>
+      <div class="hp" aria-hidden="true"><label>Leave empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <label>Full name<input name="name" maxlength="100" required autocomplete="name"></label>
+      <label>Phone <span class="muted" style="font-weight:400">(optional)</span><input name="phone" type="tel" maxlength="20" autocomplete="tel"></label>
+      <label>Category<select name="category" required><option value="">Choose one</option><option>General Enquiry</option><option>Cybersecurity &amp; Compliance</option><option>Managed Security &amp; Infrastructure</option><option>Incident Response &amp; Forensics</option><option>Blockchain &amp; Crypto Security</option><option>Custom Software &amp; Web Development</option><option>Residential &amp; Physical Security</option><option>Corporate Security Awareness Training</option><option>Student Internship</option><option>Career Opportunities</option><option>Help Centre Follow-up</option></select></label>
+      <label>Message<textarea name="message" rows="4" maxlength="1000" required></textarea></label>
+      <p class="muted" style="font-size:.88rem;margin:0">Do not send passwords, OTPs, PINs or card details.</p>
+      <div><a class="btn primary" id="enqSend" href="https://wa.me/919923109816" target="_blank" rel="noopener">Send on WhatsApp</a></div>
+      <p id="enqMsg" role="status" aria-live="polite" style="font-weight:600;margin:0"></p>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">SafeLock CyberTech Solutions Pvt. Ltd. · Office No. 4, Mayuri Palace, Dange Chowk, Pimpri-Chinchwad, Pune 411033 · www.safelocktech.com</div></footer>
+
+<button id="chatBtn" aria-expanded="false" aria-controls="chat" aria-label="Open SafeLock chat assistant">
+  <svg viewBox="0 0 48 48" aria-hidden="true"><line x1="24" y1="3" x2="24" y2="10" stroke="#fff" stroke-width="2.500" stroke-linecap="round"/><circle cx="24" cy="4" r="2.800" fill="#fff"/>
+  <rect x="7" y="10" width="34" height="27" rx="9" fill="#fff"/><rect x="2" y="20" width="5" height="9" rx="2.500" fill="#fff"/><rect x="41" y="20" width="5" height="9" rx="2.500" fill="#fff"/>
+  <rect x="12" y="15" width="24" height="17" rx="6" fill="#0b1633"/>
+  <ellipse class="eye" cx="19" cy="23" rx="3" ry="3.500" fill="#22d3ee"/><ellipse class="eye" cx="29" cy="23" rx="3" ry="3.500" fill="#22d3ee"/>
+  <path d="M20 29q4 2.500 8 0" stroke="#22d3ee" stroke-width="1.500" fill="none" stroke-linecap="round"/><rect x="16" y="38" width="16" height="6" rx="3" fill="#fff"/></svg>
+</button>
+<div id="chat" role="dialog" aria-label="SafeLock chat assistant">
+  <div id="chatHead"><div><strong>SafeLock Assistant</strong><small>Automated guidance, not a person</small></div><button id="chatClose" aria-label="Close chat">✕</button></div>
+  <div id="log" aria-live="polite"></div>
+  <div class="chips" id="chips"></div>
+  <form id="chatForm" autocomplete="off"><input id="chatIn" maxlength="300" placeholder="Describe your problem…" aria-label="Your message"><button type="submit">Send</button></form>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var D = {"Language": ["भाषा", "भाषा"], "SafeLock CyberTech Solutions – Cybersecurity, Development & Training": ["SafeLock CyberTech Solutions – साइबर सुरक्षा, डेवलपमेंट और प्रशिक्षण", "SafeLock CyberTech Solutions – सायबर सुरक्षा, डेव्हलपमेंट आणि प्रशिक्षण"], "About": ["परिचय", "आमच्याबद्दल"], "Help Centre": ["सहायता केंद्र", "मदत केंद्र"], "Services": ["सेवाएं", "सेवा"], "Dashboard": ["डैशबोर्ड", "डॅशबोर्ड"], "Why us": ["हमें क्यों चुनें", "आम्हीच का?"], "Training": ["प्रशिक्षण", "प्रशिक्षण"], "Resources": ["संसाधन", "संसाधने"], "Team": ["टीम", "टीम"], "FAQ": ["सामान्य प्रश्न", "सामान्य प्रश्न"], "Contact": ["संपर्क", "संपर्क"], "Cybersecurity • Development • Innovation": ["साइबर सुरक्षा • डेवलपमेंट • इनोवेशन", "सायबर सुरक्षा • डेव्हलपमेंट • इनोव्हेशन"], "Secure Your Digital World With": ["अपनी डिजिटल दुनिया सुरक्षित करें:", "तुमचे डिजिटल जग सुरक्षित करा:"], "Smart cybersecurity and innovative software solutions for a safer digital future. Free first-step help with hacking, scams and online threats, plus a security team when you need hands-on support.": ["सुरक्षित डिजिटल भविष्य के लिए स्मार्ट साइबर सुरक्षा और नए ज़माने के सॉफ्टवेयर समाधान। हैकिंग, स्कैम और ऑनलाइन खतरों में मुफ़्त शुरुआती मदद, और ज़रूरत पड़ने पर सीधी मदद के लिए सुरक्षा टीम।", "सुरक्षित डिजिटल भविष्यासाठी स्मार्ट सायबर सुरक्षा आणि अभिनव सॉफ्टवेअर सोल्यूशन्स. हॅकिंग, स्कॅम आणि ऑनलाइन धोक्यांसाठी मोफत सुरुवातीची मदत, आणि प्रत्यक्ष मदत हवी असेल तेव्हा सुरक्षा टीम."], "Explore Services": ["सेवाएं देखें", "सेवा पहा"], "Contact Us": ["संपर्क करें", "संपर्क साधा"], "Get help now": ["अभी मदद लें", "आत्ता मदत मिळवा"], "🔓 You have been hacked": ["🔓 आपका अकाउंट हैक हो गया", "🔓 तुमचे अकाउंट हॅक झाले"], "💸 You have been scammed": ["💸 आपके साथ ठगी हुई", "💸 तुमची फसवणूक झाली"], "🚫 Harassed or stalked": ["🚫 उत्पीड़न या पीछा", "🚫 त्रास किंवा पाठलाग"], "⚠️ Suspicious messages": ["⚠️ संदिग्ध संदेश", "⚠️ संशयास्पद मेसेज"], "Service areas": ["सेवा क्षेत्र", "सेवा क्षेत्रे"], "Incident support*": ["घटना सहायता*", "घटना सहाय्य*"], "4–6 wk": ["4–6 सप्ताह", "4–6 आठवडे"], "Live-project internships": ["लाइव प्रोजेक्ट इंटर्नशिप", "लाइव्ह प्रोजेक्ट इंटर्नशिप"], "Pune": ["पुणे", "पुणे"], "Pimpri-Chinchwad office": ["पिंपरी-चिंचवड कार्यालय", "पिंपरी-चिंचवड कार्यालय"], "*As listed in our company profile.": ["*हमारी कंपनी प्रोफ़ाइल के अनुसार।", "*आमच्या कंपनी प्रोफाइलनुसार."], "Who we are": ["हम कौन हैं", "आम्ही कोण आहोत"], "Technology you can trust": ["भरोसेमंद टेक्नोलॉजी", "विश्वासार्ह तंत्रज्ञान"], "SafeLock CyberTech Solutions is a technology-focused company providing cybersecurity, software development and IT solutions. We help businesses and individuals improve digital security, build modern software and develop practical technical skills through professional training.": ["SafeLock CyberTech Solutions एक टेक्नोलॉजी-केंद्रित कंपनी है जो साइबर सुरक्षा, सॉफ्टवेयर डेवलपमेंट और आईटी समाधान देती है। हम व्यवसायों और लोगों को डिजिटल सुरक्षा बेहतर बनाने, आधुनिक सॉफ्टवेयर बनाने और पेशेवर प्रशिक्षण से व्यावहारिक तकनीकी कौशल सीखने में मदद करते हैं।", "SafeLock CyberTech Solutions ही तंत्रज्ञानावर केंद्रित कंपनी असून सायबर सुरक्षा, सॉफ्टवेअर डेव्हलपमेंट आणि आयटी सोल्यूशन्स पुरवते. आम्ही व्यवसाय आणि व्यक्तींना डिजिटल सुरक्षा सुधारण्यास, आधुनिक सॉफ्टवेअर बनवण्यास आणि व्यावसायिक प्रशिक्षणातून व्यावहारिक तांत्रिक कौशल्ये शिकण्यास मदत करतो."], "Our mission": ["हमारा मिशन", "आमचे ध्येय"], "To deliver reliable technology solutions, strengthen digital security and empower the next generation of IT professionals.": ["भरोसेमंद टेक्नोलॉजी समाधान देना, डिजिटल सुरक्षा मज़बूत करना और आईटी पेशेवरों की अगली पीढ़ी को सक्षम बनाना।", "विश्वासार्ह तंत्रज्ञान उपाय देणे, डिजिटल सुरक्षा बळकट करणे आणि आयटी व्यावसायिकांच्या पुढच्या पिढीला सक्षम करणे."], "Our vision": ["हमारा विज़न", "आमची दृष्टी"], "To become a trusted technology partner for secure digital transformation and innovation.": ["सुरक्षित डिजिटल बदलाव और नवाचार के लिए एक भरोसेमंद टेक्नोलॉजी पार्टनर बनना।", "सुरक्षित डिजिटल परिवर्तन आणि नवोपक्रमासाठी विश्वासू तंत्रज्ञान भागीदार बनणे."], "Free first-step help": ["मुफ़्त शुरुआती मदद", "मोफत सुरुवातीची मदत"], "Cyber Help Centre": ["साइबर सहायता केंद्र", "सायबर मदत केंद्र"], "Choose the problem that matches yours. Each topic gives first steps you can take now.": ["अपनी समस्या से मेल खाने वाला विषय चुनें। हर विषय में शुरुआती कदम दिए हैं जो आप अभी उठा सकते हैं।", "तुमच्या समस्येशी जुळणारा विषय निवडा. प्रत्येक विषयात तुम्ही आत्ता उचलू शकता अशी पहिली पावले दिली आहेत."], "Urgent?": ["तुरंत मदद चाहिए?", "तातडीचे?"], "If someone is in immediate danger, call": ["अगर कोई तुरंत खतरे में है, तो कॉल करें", "कोणी तात्काळ धोक्यात असेल तर कॉल करा"], ". For financial fraud in India, call": ["। भारत में आर्थिक धोखाधड़ी के लिए कॉल करें", ". भारतात आर्थिक फसवणुकीसाठी कॉल करा"], "and report at": ["और रिपोर्ट करें", "आणि तक्रार करा"], "as early as possible.": ["पर, जितनी जल्दी हो सके।", "येथे, लवकरात लवकर."], "I think my account has been hacked": ["मुझे लगता है मेरा अकाउंट हैक हो गया है", "मला वाटते माझे अकाउंट हॅक झाले आहे"], "Change the password from a device you trust.": ["किसी भरोसेमंद डिवाइस से पासवर्ड बदलें।", "विश्वासू डिव्हाइसवरून पासवर्ड बदला."], "Sign out of all other sessions in the account's security settings.": ["अकाउंट की सुरक्षा सेटिंग में जाकर अन्य सभी सेशन से साइन आउट करें।", "अकाउंटच्या सुरक्षा सेटिंग्जमध्ये जाऊन इतर सर्व सेशनमधून साइन आउट करा."], "Turn on multi-factor authentication.": ["मल्टी-फ़ैक्टर ऑथेंटिकेशन चालू करें।", "मल्टी-फॅक्टर ऑथेंटिकेशन सुरू करा."], "Remove forwarding rules and recovery details you do not recognise.": ["फ़ॉरवर्डिंग नियम और रिकवरी जानकारी हटाएं जिन्हें आप नहीं पहचानते।", "तुम्हाला ओळखू न येणारे फॉरवर्डिंग नियम आणि रिकव्हरी तपशील काढून टाका."], "I have been scammed or lost money": ["मेरे साथ ठगी हुई है या पैसे चले गए", "माझी फसवणूक झाली आहे किंवा पैसे गेले आहेत"], "Call your bank now and ask them to block or freeze the transaction.": ["अभी अपने बैंक को कॉल करें और ट्रांज़ैक्शन ब्लॉक या फ़्रीज़ करने को कहें।", "आत्ताच तुमच्या बँकेला कॉल करा आणि व्यवहार ब्लॉक किंवा फ्रीज करण्यास सांगा."], "Report at cybercrime.gov.in or call 1930 as soon as possible.": ["cybercrime.gov.in पर रिपोर्ट करें या जल्द से जल्द 1930 पर कॉल करें।", "cybercrime.gov.in वर तक्रार करा किंवा लवकरात लवकर 1930 वर कॉल करा."], "Keep screenshots, transaction IDs and chat logs.": ["स्क्रीनशॉट, ट्रांज़ैक्शन आईडी और चैट लॉग संभालकर रखें।", "स्क्रीनशॉट, ट्रान्झॅक्शन आयडी आणि चॅट लॉग जपून ठेवा."], "Do not pay anyone to \"recover\" the money.": ["पैसे \"वापस दिलाने\" के नाम पर किसी को भुगतान न करें।", "पैसे \"परत मिळवून देतो\" म्हणणाऱ्या कोणालाही पैसे देऊ नका."], "I am getting suspicious messages or calls": ["मुझे संदिग्ध संदेश या कॉल आ रहे हैं", "मला संशयास्पद मेसेज किंवा कॉल येत आहेत"], "Do not click links, download attachments or call back the number.": ["लिंक पर क्लिक न करें, अटैचमेंट डाउनलोड न करें और उस नंबर पर वापस कॉल न करें।", "लिंकवर क्लिक करू नका, अटॅचमेंट डाउनलोड करू नका आणि त्या नंबरवर परत कॉल करू नका."], "Check with the organisation through its official app or website.": ["संबंधित संस्था के आधिकारिक ऐप या वेबसाइट से खुद जाँच करें।", "संबंधित संस्थेच्या अधिकृत अॅप किंवा वेबसाइटवरून स्वतः खात्री करा."], "Save a copy as evidence, then block and report the sender.": ["सबूत के तौर पर कॉपी सहेजें, फिर भेजने वाले को ब्लॉक करें और रिपोर्ट करें।", "पुरावा म्हणून प्रत जतन करा, मग पाठवणाऱ्याला ब्लॉक करा आणि तक्रार करा."], "I am being harassed or stalked online": ["ऑनलाइन मेरा उत्पीड़न या पीछा किया जा रहा है", "ऑनलाइन माझा छळ किंवा पाठलाग केला जात आहे"], "Save evidence: screenshots with dates, links and usernames.": ["सबूत सहेजें: तारीख वाले स्क्रीनशॉट, लिंक और यूज़रनेम।", "पुरावा जतन करा: तारखेसह स्क्रीनशॉट, लिंक आणि युजरनेम."], "Use the platform's report and block tools.": ["प्लेटफ़ॉर्म के रिपोर्ट और ब्लॉक टूल का उपयोग करें।", "प्लॅटफॉर्मची रिपोर्ट आणि ब्लॉक साधने वापरा."], "Avoid confronting the person, which can escalate things.": ["उस व्यक्ति से सीधे बहस न करें, इससे मामला बढ़ सकता है।", "त्या व्यक्तीशी थेट वाद घालू नका, त्यामुळे प्रकरण वाढू शकते."], "Report at cybercrime.gov.in or 1930. In danger? Call 112.": ["cybercrime.gov.in या 1930 पर रिपोर्ट करें। खतरे में हैं? 112 पर कॉल करें।", "cybercrime.gov.in किंवा 1930 वर तक्रार करा. धोक्यात आहात? 112 वर कॉल करा."], "My device has malware or I am being extorted": ["मेरे डिवाइस में मैलवेयर है या मुझसे जबरन वसूली हो रही है", "माझ्या डिव्हाइसमध्ये मालवेअर आहे किंवा माझ्याकडे खंडणी मागितली जात आहे"], "Disconnect the device from the internet and Wi-Fi.": ["डिवाइस को इंटरनेट और वाई-फ़ाई से डिस्कनेक्ट करें।", "डिव्हाइस इंटरनेट आणि वाय-फायवरून डिस्कनेक्ट करा."], "Do not pay the ransom.": ["फिरौती न दें।", "खंडणी देऊ नका."], "Scan from another device and consult a professional.": ["किसी दूसरे डिवाइस से स्कैन करें और किसी विशेषज्ञ से सलाह लें।", "दुसऱ्या डिव्हाइसवरून स्कॅन करा आणि तज्ज्ञांचा सल्ला घ्या."], "Report at cybercrime.gov.in or 1930.": ["cybercrime.gov.in या 1930 पर रिपोर्ट करें।", "cybercrime.gov.in किंवा 1930 वर तक्रार करा."], "My data may have leaked or I lost a device": ["मेरा डेटा लीक हो सकता है या मेरा डिवाइस खो गया है", "माझा डेटा लीक झाला असावा किंवा माझे डिव्हाइस हरवले आहे"], "Remotely lock or erase the device using its official tracking service.": ["आधिकारिक ट्रैकिंग सेवा से डिवाइस को दूर से लॉक या मिटाएं।", "अधिकृत ट्रॅकिंग सेवेद्वारे डिव्हाइस दूरस्थपणे लॉक करा किंवा पुसून टाका."], "Change passwords for accounts used on it.": ["उस पर इस्तेमाल हुए अकाउंट के पासवर्ड बदलें।", "त्यावर वापरलेल्या अकाउंटचे पासवर्ड बदला."], "Watch your accounts and bank activity for anything unusual.": ["अपने अकाउंट और बैंक गतिविधि में कुछ असामान्य दिखे तो ध्यान दें।", "तुमच्या अकाउंट आणि बँक व्यवहारांत काही असामान्य दिसते का ते पाहत रहा."], "Never share these with anyone": ["ये किसी के साथ साझा न करें", "हे कोणालाही सांगू नका"], "OTP, UPI PIN, ATM or card PIN, CVV or passwords. Genuine banks, government agencies and service providers never ask for them.": ["OTP, UPI पिन, ATM या कार्ड पिन, CVV या पासवर्ड। असली बैंक, सरकारी एजेंसियां और सेवा प्रदाता इन्हें कभी नहीं मांगते।", "OTP, UPI पिन, ATM किंवा कार्ड पिन, CVV किंवा पासवर्ड. खऱ्या बँका, सरकारी संस्था आणि सेवा पुरवठादार हे कधीही मागत नाहीत."], "What we do": ["हम क्या करते हैं", "आम्ही काय करतो"], "Our services": ["हमारी सेवाएं", "आमच्या सेवा"], "Cybersecurity & Compliance": ["साइबर सुरक्षा और अनुपालन", "सायबर सुरक्षा आणि अनुपालन"], "VAPT and security audits": ["VAPT और सुरक्षा ऑडिट", "VAPT आणि सुरक्षा ऑडिट"], "Risk assessments": ["जोखिम मूल्यांकन", "जोखीम मूल्यांकन"], "Data protection and regulatory compliance": ["डेटा सुरक्षा और नियामक अनुपालन", "डेटा संरक्षण आणि नियामक अनुपालन"], "OT security": ["OT सुरक्षा", "OT सुरक्षा"], "Managed Security": ["मैनेज्ड सिक्योरिटी", "मॅनेज्ड सिक्युरिटी"], "24/7 threat monitoring": ["24/7 खतरा निगरानी", "24/7 धोका निरीक्षण"], "Endpoint and network security": ["एंडपॉइंट और नेटवर्क सुरक्षा", "एंडपॉइंट आणि नेटवर्क सुरक्षा"], "Data encryption and cloud security": ["डेटा एन्क्रिप्शन और क्लाउड सुरक्षा", "डेटा एन्क्रिप्शन आणि क्लाउड सुरक्षा"], "Incident Response & Forensics": ["घटना प्रतिक्रिया और फ़ॉरेंसिक", "घटना प्रतिसाद आणि फॉरेन्सिक"], "Cyber forensic investigations": ["साइबर फ़ॉरेंसिक जाँच", "सायबर फॉरेन्सिक तपास"], "Data recovery and e-discovery": ["डेटा रिकवरी और ई-डिस्कवरी", "डेटा रिकव्हरी आणि ई-डिस्कव्हरी"], "Online cyber fraud investigation": ["ऑनलाइन साइबर धोखाधड़ी की जाँच", "ऑनलाइन सायबर फसवणुकीचा तपास"], "Blockchain & Crypto Security": ["ब्लॉकचेन और क्रिप्टो सुरक्षा", "ब्लॉकचेन आणि क्रिप्टो सुरक्षा"], "Smart contract audits": ["स्मार्ट कॉन्ट्रैक्ट ऑडिट", "स्मार्ट कॉन्ट्रॅक्ट ऑडिट"], "Cryptographic protection": ["क्रिप्टोग्राफ़िक सुरक्षा", "क्रिप्टोग्राफिक संरक्षण"], "Transaction monitoring": ["ट्रांज़ैक्शन निगरानी", "व्यवहार निरीक्षण"], "Custom Software & Web": ["कस्टम सॉफ्टवेयर और वेब", "कस्टम सॉफ्टवेअर आणि वेब"], "Secure web applications": ["सुरक्षित वेब एप्लिकेशन", "सुरक्षित वेब अॅप्लिकेशन्स"], "Mobile apps": ["मोबाइल ऐप", "मोबाइल अॅप्स"], "Enterprise platforms": ["एंटरप्राइज़ प्लेटफ़ॉर्म", "एंटरप्राइझ प्लॅटफॉर्म"], "Residential & Physical Security": ["आवासीय और भौतिक सुरक्षा", "निवासी आणि भौतिक सुरक्षा"], "Residential cyber protection": ["घरों के लिए साइबर सुरक्षा", "घरांसाठी सायबर संरक्षण"], "CCTV surveillance": ["CCTV निगरानी", "CCTV देखरेख"], "Smart home integrations": ["स्मार्ट होम इंटीग्रेशन", "स्मार्ट होम इंटिग्रेशन"], "Cyber Fraud Command Centre": ["साइबर धोखाधड़ी कमांड सेंटर", "सायबर फसवणूक कमांड सेंटर"], "Fraud case dashboard": ["धोखाधड़ी केस डैशबोर्ड", "फसवणूक केस डॅशबोर्ड"], "● Demo data, not real cases": ["● डेमो डेटा, असली केस नहीं", "● डेमो डेटा, खरी प्रकरणे नाहीत"], "A preview of the case-tracking view our team can use, guarded by SENTINEL, our robot scanner. Click a radar blip or a case to see the recommended next step.": ["केस-ट्रैकिंग व्यू का पूर्वावलोकन जो हमारी टीम उपयोग कर सकती है, और जिसकी निगरानी हमारा रोबोट स्कैनर SENTINEL करता है। सुझाया गया अगला कदम देखने के लिए रडार के किसी बिंदु या केस पर क्लिक करें।", "आमची टीम वापरू शकते अशा केस-ट्रॅकिंग व्ह्यूचे पूर्वावलोकन, ज्याची देखरेख आमचा रोबोट स्कॅनर SENTINEL करतो. सुचवलेले पुढचे पाऊल पाहण्यासाठी रडारवरील बिंदू किंवा केसवर क्लिक करा."], "Robot scanner": ["रोबोट स्कैनर", "रोबोट स्कॅनर"], "Standby": ["स्टैंडबाय", "स्टँडबाय"], "Run demo scan": ["डेमो स्कैन चलाएं", "डेमो स्कॅन चालवा"], "Threat radar": ["खतरा रडार", "धोका रडार"], "Open cases": ["खुले केस", "खुली प्रकरणे"], "Threat level": ["खतरे का स्तर", "धोक्याची पातळी"], "From open cases": ["खुले केस के आधार पर", "खुल्या प्रकरणांवर आधारित"], "Total cases": ["कुल केस", "एकूण प्रकरणे"], "Open": ["खुले", "खुली"], "Critical / high open": ["गंभीर / उच्च (खुले)", "गंभीर / उच्च (खुली)"], "Resolved": ["सुलझे", "निकाली"], "Fraud case tracker": ["धोखाधड़ी केस ट्रैकर", "फसवणूक केस ट्रॅकर"], "Case detail": ["केस विवरण", "केस तपशील"], "Live feed": ["लाइव फ़ीड", "लाइव्ह फीड"], "Simulated": ["सिमुलेटेड", "सिम्युलेटेड"], "Cases by fraud type": ["धोखाधड़ी के प्रकार के अनुसार केस", "फसवणुकीच्या प्रकारानुसार प्रकरणे"], "All figures above are sample data for design purposes. Real case data would need a secure backend with logins and privacy controls.": ["ऊपर के सभी आँकड़े केवल डिज़ाइन के लिए नमूना डेटा हैं। असली केस डेटा के लिए लॉगिन और गोपनीयता नियंत्रण वाला सुरक्षित बैकएंड चाहिए।", "वरील सर्व आकडे केवळ डिझाइनसाठी नमुना डेटा आहेत. खऱ्या केस डेटासाठी लॉगिन आणि गोपनीयता नियंत्रणे असलेला सुरक्षित बॅकएंड लागेल."], "Why choose SafeLock?": ["SafeLock ही क्यों चुनें?", "SafeLock च का निवडावे?"], "Security built into everything we make": ["हमारे हर काम में बनी-बनाई सुरक्षा", "आम्ही बनवलेल्या प्रत्येक गोष्टीत सुरक्षा"], "Security-first development": ["सुरक्षा-प्रथम डेवलपमेंट", "सुरक्षा-प्रथम डेव्हलपमेंट"], "Web and mobile products are built with protection in mind from day one, not added at the end.": ["वेब और मोबाइल प्रोडक्ट पहले दिन से सुरक्षा को ध्यान में रखकर बनते हैं, अंत में जोड़े नहीं जाते।", "वेब आणि मोबाइल प्रॉडक्ट्स पहिल्या दिवसापासून सुरक्षेचा विचार करून बनवले जातात, शेवटी जोडले जात नाहीत."], "Hands-on expertise": ["प्रत्यक्ष अनुभव", "प्रत्यक्ष अनुभव"], "Cyber experts and developers under one roof: audit, build, monitor and respond.": ["साइबर विशेषज्ञ और डेवलपर एक ही छत के नीचे: ऑडिट, निर्माण, निगरानी और प्रतिक्रिया।", "सायबर तज्ज्ञ आणि डेव्हलपर्स एकाच छताखाली: ऑडिट, निर्मिती, देखरेख आणि प्रतिसाद."], "Plain-language guidance": ["सरल भाषा में मार्गदर्शन", "सोप्या भाषेत मार्गदर्शन"], "Clear steps for everyday users and clear reports for businesses, without jargon.": ["आम उपयोगकर्ताओं के लिए साफ़ कदम और व्यवसायों के लिए साफ़ रिपोर्ट, बिना कठिन शब्दों के।", "सामान्य वापरकर्त्यांसाठी स्पष्ट पावले आणि व्यवसायांसाठी स्पष्ट अहवाल, अवघड शब्दांशिवाय."], "Local and reachable": ["स्थानीय और आसानी से उपलब्ध", "स्थानिक आणि सहज उपलब्ध"], "Based in Pimpri-Chinchwad, Pune, and reachable by phone, WhatsApp or in person.": ["पिंपरी-चिंचवड, पुणे में स्थित, और फ़ोन, WhatsApp या सीधे मिलकर संपर्क किया जा सकता है।", "पिंपरी-चिंचवड, पुणे येथे स्थित; फोन, WhatsApp किंवा प्रत्यक्ष भेटीतून संपर्क साधता येतो."], "Learn with us": ["हमारे साथ सीखें", "आमच्यासोबत शिका"], "Training, internships & careers": ["प्रशिक्षण, इंटर्नशिप और करियर", "प्रशिक्षण, इंटर्नशिप आणि करिअर"], "Corporate security awareness": ["कॉर्पोरेट सुरक्षा जागरूकता", "कॉर्पोरेट सुरक्षा जागरूकता"], "Customised workshops that help your team recognise phishing and social engineering.": ["अनुकूलित वर्कशॉप जो आपकी टीम को फ़िशिंग और सोशल इंजीनियरिंग पहचानना सिखाती हैं।", "तुमच्या टीमला फिशिंग आणि सोशल इंजिनिअरिंग ओळखायला शिकवणाऱ्या अनुरूप कार्यशाळा."], "Student internships": ["छात्र इंटर्नशिप", "विद्यार्थी इंटर्नशिप"], "Practical 4–6 week internships in cybersecurity and software development, with live project exposure. Open to students from all disciplines.": ["साइबर सुरक्षा और सॉफ्टवेयर डेवलपमेंट में 4–6 सप्ताह की व्यावहारिक इंटर्नशिप, लाइव प्रोजेक्ट के अनुभव के साथ। सभी शाखाओं के छात्रों के लिए खुली।", "सायबर सुरक्षा आणि सॉफ्टवेअर डेव्हलपमेंटमधील 4–6 आठवड्यांची व्यावहारिक इंटर्नशिप, लाइव्ह प्रोजेक्टच्या अनुभवासह. सर्व शाखांतील विद्यार्थ्यांसाठी खुली."], "Careers": ["करियर", "करिअर"], "We hire security analysts, penetration testers, forensic investigators and full-stack developers. Send your CV through the form below.": ["हम सिक्योरिटी एनालिस्ट, पेनेट्रेशन टेस्टर, फ़ॉरेंसिक जाँचकर्ता और फुल-स्टैक डेवलपर की भर्ती करते हैं। नीचे दिए फ़ॉर्म से अपना CV भेजें।", "आम्ही सिक्युरिटी अॅनालिस्ट, पेनेट्रेशन टेस्टर, फॉरेन्सिक तपासनीस आणि फुल-स्टॅक डेव्हलपर्सची भरती करतो. खालील फॉर्मद्वारे तुमचा CV पाठवा."], "Cyber safety guides": ["साइबर सुरक्षा गाइड", "सायबर सुरक्षा मार्गदर्शक"], "Strong passwords": ["मज़बूत पासवर्ड", "मजबूत पासवर्ड"], "Use a long passphrase or a password manager, and never reuse a password across sites.": ["लंबा पासफ़्रेज़ या पासवर्ड मैनेजर इस्तेमाल करें, और अलग-अलग साइट पर एक ही पासवर्ड कभी न दोहराएं।", "लांब पासफ्रेज किंवा पासवर्ड मॅनेजर वापरा, आणि वेगवेगळ्या साइट्सवर एकच पासवर्ड कधीही वापरू नका."], "Multi-factor authentication": ["मल्टी-फ़ैक्टर ऑथेंटिकेशन", "मल्टी-फॅक्टर ऑथेंटिकेशन"], "Add a second step to email, banking and social accounts. App-based codes are stronger than SMS.": ["ईमेल, बैंकिंग और सोशल अकाउंट में दूसरा चरण जोड़ें। ऐप-आधारित कोड SMS से ज़्यादा सुरक्षित होते हैं।", "ईमेल, बँकिंग आणि सोशल अकाउंटमध्ये दुसरी पायरी जोडा. अॅप-आधारित कोड SMS पेक्षा अधिक सुरक्षित असतात."], "Spotting phishing": ["फ़िशिंग पहचानें", "फिशिंग ओळखा"], "Be wary of urgency, threats and links that do not match the sender. Visit the official site yourself.": ["जल्दबाज़ी, धमकी और ऐसे लिंक से सावधान रहें जो भेजने वाले से मेल न खाएं। आधिकारिक साइट पर खुद जाएं।", "घाई, धमक्या आणि पाठवणाऱ्याशी न जुळणाऱ्या लिंकपासून सावध रहा. अधिकृत साइटवर स्वतः जा."], "Updates and backups": ["अपडेट और बैकअप", "अपडेट आणि बॅकअप"], "Turn on automatic updates. Keep three copies of important data on two media types, one offline or off-site.": ["ऑटोमैटिक अपडेट चालू रखें। ज़रूरी डेटा की तीन कॉपी दो तरह के माध्यम पर रखें, एक ऑफ़लाइन या दूसरी जगह।", "ऑटोमॅटिक अपडेट सुरू ठेवा. महत्त्वाच्या डेटाच्या तीन प्रती दोन प्रकारच्या माध्यमांवर ठेवा, एक ऑफलाइन किंवा दुसऱ्या ठिकाणी."], "Privacy settings": ["प्राइवेसी सेटिंग", "प्रायव्हसी सेटिंग्ज"], "Review app permissions, limit public sharing and turn off location sharing you do not need.": ["ऐप अनुमतियाँ जाँचें, सार्वजनिक शेयरिंग सीमित करें और ग़ैर-ज़रूरी लोकेशन शेयरिंग बंद करें।", "अॅप परवानग्या तपासा, सार्वजनिक शेअरिंग मर्यादित करा आणि गरज नसलेले लोकेशन शेअरिंग बंद करा."], "Public Wi-Fi and payments": ["सार्वजनिक वाई-फ़ाई और भुगतान", "सार्वजनिक वाय-फाय आणि पेमेंट"], "Avoid banking on open networks. Verify payment requests and QR codes through a separate, known channel.": ["खुले नेटवर्क पर बैंकिंग न करें। भुगतान अनुरोध और QR कोड किसी अलग, जाने-पहचाने माध्यम से जाँचें।", "उघड्या नेटवर्कवर बँकिंग टाळा. पेमेंट विनंत्या आणि QR कोड वेगळ्या, ओळखीच्या माध्यमातून पडताळा."], "Frequently asked questions": ["अक्सर पूछे जाने वाले प्रश्न", "वारंवार विचारले जाणारे प्रश्न"], "Is this help free?": ["क्या यह मदद मुफ़्त है?", "ही मदत मोफत आहे का?"], "The guidance on this page is free. Investigation and security services are quoted separately.": ["इस पेज का मार्गदर्शन मुफ़्त है। जाँच और सुरक्षा सेवाओं का शुल्क अलग से बताया जाता है।", "या पानावरील मार्गदर्शन मोफत आहे. तपास आणि सुरक्षा सेवांची किंमत स्वतंत्रपणे सांगितली जाते."], "Is the assistant a real person?": ["क्या असिस्टेंट असली इंसान है?", "असिस्टंट खरी व्यक्ती आहे का?"], "No. The robot assistant gives set answers to common problems. For a specific case, send an enquiry or call our team.": ["नहीं। रोबोट असिस्टेंट आम समस्याओं के तय जवाब देता है। किसी ख़ास मामले के लिए पूछताछ भेजें या हमारी टीम को कॉल करें।", "नाही. रोबोट असिस्टंट सामान्य समस्यांची ठरलेली उत्तरे देतो. विशिष्ट प्रकरणासाठी चौकशी पाठवा किंवा आमच्या टीमला कॉल करा."], "Can you help if I have been scammed?": ["अगर मेरे साथ ठगी हुई हो तो क्या आप मदद कर सकते हैं?", "माझी फसवणूक झाली असल्यास तुम्ही मदत करू शकता का?"], "Yes, we can advise and investigate. Contact your bank first, then report at cybercrime.gov.in or call 1930.": ["हाँ, हम सलाह दे सकते हैं और जाँच कर सकते हैं। पहले अपने बैंक से संपर्क करें, फिर cybercrime.gov.in पर रिपोर्ट करें या 1930 पर कॉल करें।", "होय, आम्ही सल्ला देऊ शकतो आणि तपास करू शकतो. आधी तुमच्या बँकेशी संपर्क साधा, मग cybercrime.gov.in वर तक्रार करा किंवा 1930 वर कॉल करा."], "When are you available?": ["आप कब उपलब्ध होते हैं?", "तुम्ही केव्हा उपलब्ध असता?"], "Monday to Saturday 9:00 AM – 10:00 PM, and Sunday 9:00 AM – 7:00 PM. Incident support is listed as 24/7 in our company profile.": ["सोमवार से शनिवार सुबह 9:00 से रात 10:00 बजे तक, और रविवार सुबह 9:00 से शाम 7:00 बजे तक। हमारी कंपनी प्रोफ़ाइल में घटना सहायता 24/7 बताई गई है।", "सोमवार ते शनिवार सकाळी 9:00 ते रात्री 10:00, आणि रविवार सकाळी 9:00 ते संध्याकाळी 7:00. आमच्या कंपनी प्रोफाइलमध्ये घटना सहाय्य 24/7 नमूद आहे."], "Our team": ["हमारी टीम", "आमची टीम"], "Tech Leader / Tech Supporter": ["टेक लीडर / टेक सपोर्टर", "टेक लीडर / टेक सपोर्टर"], "Cyber Expert": ["साइबर विशेषज्ञ", "सायबर तज्ज्ञ"], "Contact SafeLock": ["SafeLock से संपर्क करें", "SafeLock शी संपर्क साधा"], "Office": ["कार्यालय", "कार्यालय"], "Phone / WhatsApp": ["फ़ोन / WhatsApp", "फोन / WhatsApp"], "Copy": ["कॉपी", "कॉपी"], "Copied": ["कॉपी हो गया", "कॉपी झाले"], "Email": ["ईमेल", "ईमेल"], "Hours": ["समय", "वेळ"], "Mon–Sat 9:00 AM – 10:00 PM · Sun 9:00 AM – 7:00 PM": ["सोम–शनि सुबह 9:00 – रात 10:00 · रवि सुबह 9:00 – शाम 7:00", "सोम–शनि सकाळी 9:00 – रात्री 10:00 · रवि सकाळी 9:00 – संध्याकाळी 7:00"], "WhatsApp us": ["हमें WhatsApp करें", "आम्हाला WhatsApp करा"], "View on Google Maps": ["Google Maps पर देखें", "Google Maps वर पहा"], "Send an enquiry": ["पूछताछ भेजें", "चौकशी पाठवा"], "Fill in the form and press the button. WhatsApp opens automatically with your details filled in.": ["फ़ॉर्म भरें और बटन दबाएं। आपकी जानकारी के साथ WhatsApp अपने-आप खुल जाएगा।", "फॉर्म भरा आणि बटण दाबा. तुमच्या माहितीसह WhatsApp आपोआप उघडेल."], "Full name": ["पूरा नाम", "पूर्ण नाव"], "Phone": ["फ़ोन", "फोन"], "(optional)": ["(वैकल्पिक)", "(ऐच्छिक)"], "Category": ["श्रेणी", "प्रकार"], "Choose one": ["एक चुनें", "एक निवडा"], "General Enquiry": ["सामान्य पूछताछ", "सामान्य चौकशी"], "Managed Security & Infrastructure": ["मैनेज्ड सिक्योरिटी और इन्फ्रास्ट्रक्चर", "मॅनेज्ड सिक्युरिटी आणि इन्फ्रास्ट्रक्चर"], "Custom Software & Web Development": ["कस्टम सॉफ्टवेयर और वेब डेवलपमेंट", "कस्टम सॉफ्टवेअर आणि वेब डेव्हलपमेंट"], "Corporate Security Awareness Training": ["कॉर्पोरेट सुरक्षा जागरूकता प्रशिक्षण", "कॉर्पोरेट सुरक्षा जागरूकता प्रशिक्षण"], "Student Internship": ["छात्र इंटर्नशिप", "विद्यार्थी इंटर्नशिप"], "Career Opportunities": ["करियर के अवसर", "करिअरच्या संधी"], "Help Centre Follow-up": ["सहायता केंद्र फ़ॉलो-अप", "मदत केंद्र फॉलो-अप"], "Message": ["संदेश", "संदेश"], "Do not send passwords, OTPs, PINs or card details.": ["पासवर्ड, OTP, पिन या कार्ड की जानकारी न भेजें।", "पासवर्ड, OTP, पिन किंवा कार्ड तपशील पाठवू नका."], "Send on WhatsApp": ["WhatsApp पर भेजें", "WhatsApp वर पाठवा"], "SafeLock Assistant": ["SafeLock असिस्टेंट", "SafeLock असिस्टंट"], "Automated guidance, not a person": ["स्वचालित मार्गदर्शन, कोई इंसान नहीं", "स्वयंचलित मार्गदर्शन, व्यक्ती नाही"], "Send": ["भेजें", "पाठवा"], "Main": ["मुख्य मेनू", "मुख्य मेनू"], "Quick help": ["त्वरित मदद", "त्वरित मदत"], "Digital shield with lock and connected devices": ["लॉक और जुड़े डिवाइस के साथ डिजिटल शील्ड", "लॉक आणि जोडलेल्या डिव्हाइससह डिजिटल शील्ड"], "Robot scanner mascot": ["रोबोट स्कैनर मैस्कॉट", "रोबोट स्कॅनर मॅस्कॉट"], "Radar of open cases": ["खुले केस का रडार", "खुल्या प्रकरणांचे रडार"], "Filter cases": ["केस फ़िल्टर करें", "केस फिल्टर करा"], "Open SafeLock chat assistant": ["SafeLock चैट असिस्टेंट खोलें", "SafeLock चॅट असिस्टंट उघडा"], "SafeLock chat assistant": ["SafeLock चैट असिस्टेंट", "SafeLock चॅट असिस्टंट"], "Close chat": ["चैट बंद करें", "चॅट बंद करा"], "Describe your problem…": ["अपनी समस्या बताएं…", "तुमची समस्या सांगा…"], "Your message": ["आपका संदेश", "तुमचा संदेश"], "Scanning (demo)…": ["स्कैन हो रहा है (डेमो)…", "स्कॅन सुरू आहे (डेमो)…"], "Demo scan complete:": ["डेमो स्कैन पूरा:", "डेमो स्कॅन पूर्ण:"], "open sample cases": ["खुले नमूना केस", "खुली नमुना प्रकरणे"], "severity": ["गंभीरता", "तीव्रता"], "UPI fraud": ["UPI धोखाधड़ी", "UPI फसवणूक"], "Phishing": ["फ़िशिंग", "फिशिंग"], "Account takeover": ["अकाउंट हाइजैक", "अकाउंट ताबा"], "Investment scam": ["निवेश घोटाला", "गुंतवणूक घोटाळा"], "Harassment": ["उत्पीड़न", "छळ"], "Ransomware": ["रैनसमवेयर", "रॅन्समवेअर"], "Fake job offer": ["फ़र्ज़ी नौकरी ऑफ़र", "बनावट नोकरी ऑफर"], "SIM swap": ["सिम स्वैप", "सिम स्वॅप"], "Crypto scam": ["क्रिप्टो घोटाला", "क्रिप्टो घोटाळा"], "Critical": ["गंभीर", "गंभीर"], "High": ["उच्च", "उच्च"], "Medium": ["मध्यम", "मध्यम"], "Low": ["निम्न", "कमी"], "All": ["सभी", "सर्व"], "New": ["नया", "नवीन"], "Investigating": ["जाँच जारी", "तपास सुरू"], "Bank notified": ["बैंक को सूचित", "बँकेला कळवले"], "Reported to 1930": ["1930 पर रिपोर्ट", "1930 वर तक्रार"], "No cases in this status.": ["इस स्थिति में कोई केस नहीं।", "या स्थितीत कोणतेही प्रकरण नाही."], "Next step:": ["अगला कदम:", "पुढचे पाऊल:"], "Call the bank now to freeze the transfer, then report on 1930 and cybercrime.gov.in.": ["ट्रांसफ़र फ़्रीज़ करने के लिए तुरंत बैंक को कॉल करें, फिर 1930 और cybercrime.gov.in पर रिपोर्ट करें।", "ट्रान्सफर फ्रीज करण्यासाठी लगेच बँकेला कॉल करा, मग 1930 आणि cybercrime.gov.in वर तक्रार करा."], "Do not click further. Capture the message, reset affected passwords, block the sender.": ["आगे क्लिक न करें। संदेश सहेजें, प्रभावित पासवर्ड रीसेट करें, भेजने वाले को ब्लॉक करें।", "पुढे क्लिक करू नका. मेसेज जतन करा, प्रभावित पासवर्ड रीसेट करा, पाठवणाऱ्याला ब्लॉक करा."], "Reset the password from a trusted device, end all sessions, enable multi-factor authentication.": ["भरोसेमंद डिवाइस से पासवर्ड रीसेट करें, सभी सेशन समाप्त करें, मल्टी-फ़ैक्टर ऑथेंटिकेशन चालू करें।", "विश्वासू डिव्हाइसवरून पासवर्ड रीसेट करा, सर्व सेशन संपवा, मल्टी-फॅक्टर ऑथेंटिकेशन सुरू करा."], "Stop all payments, keep chats and receipts, report on 1930 and tell the bank.": ["सभी भुगतान रोकें, चैट और रसीदें सुरक्षित रखें, 1930 पर रिपोर्ट करें और बैंक को बताएं।", "सर्व पेमेंट थांबवा, चॅट आणि पावत्या जपून ठेवा, 1930 वर तक्रार करा आणि बँकेला कळवा."], "Save dated screenshots, use platform report tools, report at cybercrime.gov.in.": ["तारीख वाले स्क्रीनशॉट सहेजें, प्लेटफ़ॉर्म के रिपोर्ट टूल इस्तेमाल करें, cybercrime.gov.in पर रिपोर्ट करें।", "तारखेसह स्क्रीनशॉट जतन करा, प्लॅटफॉर्मची रिपोर्ट साधने वापरा, cybercrime.gov.in वर तक्रार करा."], "Isolate the device from the network, do not pay, preserve logs and call a responder.": ["डिवाइस को नेटवर्क से अलग करें, भुगतान न करें, लॉग सुरक्षित रखें और रिस्पॉन्डर को बुलाएं।", "डिव्हाइस नेटवर्कपासून वेगळे करा, पैसे देऊ नका, लॉग जपून ठेवा आणि रिस्पॉन्डरला बोलवा."], "Cut contact, never pay 'registration fees', report the listing and the sender.": ["संपर्क तोड़ें, कभी 'रजिस्ट्रेशन फ़ीस' न दें, लिस्टिंग और भेजने वाले की रिपोर्ट करें।", "संपर्क तोडा, कधीही 'नोंदणी शुल्क' देऊ नका, जाहिरात आणि पाठवणाऱ्याची तक्रार करा."], "Contact the mobile operator to block the SIM, alert the bank, change account passwords.": ["सिम ब्लॉक करने के लिए मोबाइल ऑपरेटर से संपर्क करें, बैंक को सतर्क करें, अकाउंट के पासवर्ड बदलें।", "सिम ब्लॉक करण्यासाठी मोबाइल ऑपरेटरशी संपर्क साधा, बँकेला सतर्क करा, अकाउंट पासवर्ड बदला."], "Record wallet addresses and transaction IDs, report on 1930, avoid 'recovery' services.": ["वॉलेट एड्रेस और ट्रांज़ैक्शन आईडी नोट करें, 1930 पर रिपोर्ट करें, 'रिकवरी' सेवाओं से बचें।", "वॉलेट अॅड्रेस आणि ट्रान्झॅक्शन आयडी नोंदवा, 1930 वर तक्रार करा, 'रिकव्हरी' सेवांपासून दूर रहा."], "Phishing link flagged": ["फ़िशिंग लिंक चिह्नित", "फिशिंग लिंक चिन्हांकित"], "Suspicious login attempt blocked": ["संदिग्ध लॉगिन प्रयास रोका गया", "संशयास्पद लॉगिन प्रयत्न रोखला"], "UPI fraud report logged": ["UPI धोखाधड़ी रिपोर्ट दर्ज", "UPI फसवणूक तक्रार नोंदवली"], "Ransomware signature matched": ["रैनसमवेयर सिग्नेचर मिला", "रॅन्समवेअर सिग्नेचर जुळला"], "Case FC-1045 updated": ["केस FC-1045 अपडेट हुआ", "केस FC-1045 अपडेट झाला"], "Spoofed sender detected": ["नकली प्रेषक पकड़ा गया", "बनावट प्रेषक आढळला"], "Evidence file archived": ["सबूत फ़ाइल संग्रहित", "पुरावा फाइल संग्रहित"], "Please add your name, a category and a message of at least 10 characters.": ["कृपया अपना नाम, एक श्रेणी और कम से कम 10 अक्षरों का संदेश जोड़ें।", "कृपया तुमचे नाव, एक प्रकार आणि किमान 10 अक्षरांचा संदेश टाका."], "For your safety, do not include OTPs, PINs or card details.": ["आपकी सुरक्षा के लिए OTP, पिन या कार्ड की जानकारी न डालें।", "तुमच्या सुरक्षिततेसाठी OTP, पिन किंवा कार्ड तपशील टाकू नका."], "Opening WhatsApp… press send there to reach our team.": ["WhatsApp खुल रहा है… हमारी टीम तक पहुँचने के लिए वहाँ भेजें दबाएं।", "WhatsApp उघडत आहे… आमच्या टीमपर्यंत पोहोचण्यासाठी तिथे पाठवा दाबा."], "Hello! Welcome to SafeLock CyberTech. How can we help you today?\n\nI give first-step guidance, not legal or technical advice. In an emergency, call 112.": ["नमस्ते! SafeLock CyberTech में आपका स्वागत है। आज हम आपकी कैसे मदद कर सकते हैं?\n\nमैं शुरुआती मार्गदर्शन देता हूँ, कानूनी या तकनीकी सलाह नहीं। आपात स्थिति में 112 पर कॉल करें।", "नमस्कार! SafeLock CyberTech मध्ये आपले स्वागत आहे. आज आम्ही तुम्हाला कशी मदत करू शकतो?\n\nमी सुरुवातीचे मार्गदर्शन देतो, कायदेशीर किंवा तांत्रिक सल्ला नाही. आणीबाणीत 112 वर कॉल करा."], "Chat on WhatsApp": ["WhatsApp पर चैट करें", "WhatsApp वर चॅट करा"], "Cybersecurity Services": ["साइबर सुरक्षा सेवाएं", "सायबर सुरक्षा सेवा"], "Website Development": ["वेबसाइट डेवलपमेंट", "वेबसाइट डेव्हलपमेंट"], "Software Development": ["सॉफ्टवेयर डेवलपमेंट", "सॉफ्टवेअर डेव्हलपमेंट"], "IT Courses & Internship": ["आईटी कोर्स और इंटर्नशिप", "आयटी कोर्स आणि इंटर्नशिप"], "I've been hacked": ["मेरा अकाउंट हैक हो गया", "माझे अकाउंट हॅक झाले"], "I was scammed": ["मेरे साथ ठगी हुई", "माझी फसवणूक झाली"], "Suspicious message": ["संदिग्ध संदेश", "संशयास्पद मेसेज"], "My account has been hacked": ["मेरा अकाउंट हैक हो गया है", "माझे अकाउंट हॅक झाले आहे"]}, IDX = { hi: 0, mr: 1 };
+  var lang = "en", orig = new WeakMap(), TITLE = document.title, fontOn = false;
+  function val(en) { var v = D[en]; return v ? v[IDX[lang]] : null; }
+  function trNode(n) {
+    var o = orig.get(n), src = o === undefined ? n.nodeValue : o;
+    if (lang === "en") { if (o !== undefined && n.nodeValue !== o) n.nodeValue = o; return; }
+    var core = src.trim(); if (!core) return;
+    var v = val(core); if (v == null) return;
+    if (o === undefined) orig.set(n, src);
+    n.nodeValue = src.slice(0, src.length - src.trimStart().length) + v + src.slice(src.trimEnd().length);
+  }
+  function walk(root) {
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), list = [], n;
+    while ((n = w.nextNode())) { if (!/^(SCRIPT|STYLE|NOSCRIPT)$/.test(n.parentNode.nodeName)) list.push(n); }
+    list.forEach(trNode);
+  }
+  function attrs() {
+    document.querySelectorAll("[aria-label],[placeholder]").forEach(function (el) {
+      ["aria-label", "placeholder"].forEach(function (a) {
+        if (!el.hasAttribute(a)) return;
+        var k = "data-en-" + a;
+        if (!el.hasAttribute(k)) { if (!D[el.getAttribute(a)]) return; el.setAttribute(k, el.getAttribute(a)); }
+        var en = el.getAttribute(k);
+        el.setAttribute(a, lang === "en" || !D[en] ? en : D[en][IDX[lang]]);
+      });
+    });
+  }
+  function loadFont() {
+    if (fontOn) return; fontOn = true;
+    var l = document.createElement("link"); l.rel = "stylesheet";
+    l.href = "https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap";
+    document.head.appendChild(l);
+  }
+  function setLang(l) {
+    if (l !== "hi" && l !== "mr") l = "en";
+    lang = l; document.documentElement.lang = l;
+    if (l !== "en") loadFont();
+    walk(document.body); attrs();
+    document.title = l === "en" ? TITLE : (val(TITLE) || TITLE);
+    document.querySelectorAll(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === l)); });
+    try { localStorage.setItem("slLang", l); } catch (e) {}
+    document.dispatchEvent(new CustomEvent("sl-lang", { detail: l }));
+  }
+  // dropdown options send their English text to WhatsApp, whatever language is shown
+  document.querySelectorAll("#enq option").forEach(function (o) { if (!o.hasAttribute("value")) o.setAttribute("value", o.textContent.trim()); });
+  new MutationObserver(function (ms) {
+    if (lang === "en") return;
+    ms.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.nodeType === 3) trNode(n); else if (n.nodeType === 1) walk(n); }); });
+  }).observe(document.body, { childList: true, subtree: true });
+  document.querySelectorAll(".lang button").forEach(function (b) { b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); }); });
+  window.SL = { lang: function () { return lang; }, tr: function (en) { return lang === "en" ? en : (val(en) || en); } };
+  var saved = null; try { saved = localStorage.getItem("slLang"); } catch (e) {}
+  var nl = (navigator.language || "").slice(0, 2), start = saved || (nl === "hi" || nl === "mr" ? nl : "en");
+  if (start !== "en") setLang(start);
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var PHONE = "+91 99231 09816", WA = "https://wa.me/919923109816";
+  var CONTACT_HTML = true;
+  var KB = [
+    { k: ["emergency", "in danger", "kill", "suicid", "hurt myself"], a: "If someone is in immediate danger, call 112 now. If you are thinking about harming yourself, please contact a local helpline or someone you trust right away." },
+    { k: ["hack", "compromis", "someone logged", "took over", "my account"], a: "Account hacked, first steps:\n1. Change the password from a device you trust.\n2. Sign out of all other sessions.\n3. Turn on multi-factor authentication.\n4. Remove forwarding rules and recovery details you don't recognise.\n5. Change passwords on other accounts that used the same one.\nIf money was taken, also see the scam steps." },
+    { k: ["scam", "fraud", "money", "upi", "paid", "transfer", "refund", "bank"], a: "Scam or money lost, act quickly:\n1. Call your bank now and ask them to block or freeze the transaction.\n2. Report at cybercrime.gov.in or call 1930.\n3. Keep screenshots, transaction IDs and chat logs.\n4. Don't pay anyone to 'recover' the money; that is a common second scam." },
+    { k: ["harass", "stalk", "blackmail", "threat", "abuse", "bully"], a: "Online harassment or stalking:\n1. Save evidence: screenshots with dates, links and usernames.\n2. Use the platform's report and block tools.\n3. Don't confront the person; it can escalate.\n4. Report at cybercrime.gov.in or call 1930.\nIn immediate danger? Call 112." },
+    { k: ["suspicious", "phish", "sms", "link", "call from", "message from", "email from"], a: "Suspicious message or call:\n1. Don't click links, download attachments or call back the number.\n2. Check the organisation through its official app or website yourself.\n3. Save a copy as evidence, then block and report the sender." },
+    { k: ["malware", "virus", "ransom", "extort", "locked my", "encrypted"], a: "Malware or extortion:\n1. Disconnect the device from the internet and Wi-Fi.\n2. Do not pay the ransom.\n3. Scan from another device and consult a professional.\n4. Report at cybercrime.gov.in or call 1930." },
+    { k: ["lost my phone", "lost device", "leak", "breach", "data stolen"], a: "Lost device or data leak:\n1. Remotely lock or erase the device with its official tracking service.\n2. Change passwords for accounts used on it.\n3. Watch your accounts and bank activity for anything unusual." },
+    { k: ["otp", "pin", "cvv", "password"], a: "Never share your OTP, UPI PIN, ATM or card PIN, CVV or passwords with anyone. Banks and agencies never ask for them. Use a unique passphrase for each account and turn on multi-factor authentication." },
+    { k: ["cybersecurity", "vapt", "audit", "compliance", "security service", "monitoring", "forensic", "blockchain", "crypto", "cctv"], a: "Cybersecurity services:\n• Compliance: VAPT, audits, risk assessments, data protection\n• Managed security: 24/7 monitoring, endpoint, network and cloud security\n• Incident response and forensics\n• Blockchain and crypto security\n• Residential and physical security (CCTV, smart home)\nUse 'Contact SafeLock' to talk to the team." },
+    { k: ["website", "web", "software", "app", "development", "develop", "mobile"], a: "Website and software development:\n• Secure web applications\n• Mobile apps\n• Enterprise platforms\nTell us what you need through the enquiry form or on WhatsApp and the team will get back to you." },
+    { k: ["course", "internship", "intern", "student", "career", "job", "hiring", "cv", "resume"], a: "Student internships run 4–6 weeks with live project exposure and are open to students from all disciplines. We also hire security analysts, penetration testers, forensic investigators and full-stack developers. Use the enquiry form and choose the matching category." },
+    { k: ["train", "workshop", "awareness", "employee"], a: "We run customised corporate security awareness workshops that teach staff to spot phishing and social engineering. Choose 'Corporate Security Awareness Training' in the enquiry form." },
+    { k: ["service", "what do you do", "offer", "company", "about"], a: "SafeLock CyberTech offers cybersecurity and compliance, managed security, incident response and forensics, blockchain security, custom software and web development, residential and physical security, plus training and internships." },
+    { k: ["contact", "phone", "call", "whatsapp", "email", "address", "office", "hours", "where"], a: "contact" },
+    { k: ["hi", "hello", "hey", "good morning", "good evening", "namaste"], a: "Hello! I can help with hacked accounts, scams, harassment, suspicious messages, malware and our services. What's going on?" }
+  ];
+  var KBX = [{"k": ["आपात", "आपत्कालीन", "आणीबाणी", "आत्महत्या", "खतरे में", "धोक्यात"], "hi": "अगर कोई तुरंत खतरे में है, तो अभी 112 पर कॉल करें। अगर आप खुद को नुकसान पहुँचाने की सोच रहे हैं, तो कृपया किसी स्थानीय हेल्पलाइन या अपने किसी भरोसेमंद व्यक्ति से तुरंत संपर्क करें।", "mr": "कोणी तात्काळ धोक्यात असेल तर आत्ताच 112 वर कॉल करा. तुम्ही स्वतःला इजा करण्याचा विचार करत असाल, तर कृपया स्थानिक हेल्पलाइन किंवा विश्वासू व्यक्तीशी लगेच संपर्क साधा."}, {"k": ["हैक", "हॅक", "हॅकिंग"], "hi": "अकाउंट हैक होने पर पहले कदम:\n1. किसी भरोसेमंद डिवाइस से पासवर्ड बदलें।\n2. अन्य सभी सेशन से साइन आउट करें।\n3. मल्टी-फ़ैक्टर ऑथेंटिकेशन चालू करें।\n4. फ़ॉरवर्डिंग नियम और अनजान रिकवरी जानकारी हटाएं।\n5. जिन अन्य अकाउंट में वही पासवर्ड था, उन्हें भी बदलें।\nअगर पैसे निकले हैं, तो ठगी वाले कदम भी देखें।", "mr": "अकाउंट हॅक झाल्यास पहिली पावले:\n1. विश्वासू डिव्हाइसवरून पासवर्ड बदला.\n2. इतर सर्व सेशनमधून साइन आउट करा.\n3. मल्टी-फॅक्टर ऑथेंटिकेशन सुरू करा.\n4. फॉरवर्डिंग नियम आणि अनोळखी रिकव्हरी तपशील काढून टाका.\n5. तोच पासवर्ड वापरलेल्या इतर अकाउंटचे पासवर्डही बदला.\nपैसे गेले असल्यास फसवणुकीची पावलेही पहा."}, {"k": ["ठगी", "धोखा", "धोखाधड़ी", "फ्रॉड", "फसवणूक", "पैसे", "पैसा", "यूपीआई", "बैंक", "बँक", "घोटाला", "घोटाळा", "स्कैम", "स्कॅम"], "hi": "ठगी या पैसे जाने पर तुरंत कार्रवाई करें:\n1. अभी बैंक को कॉल करें और ट्रांज़ैक्शन ब्लॉक या फ़्रीज़ करने को कहें।\n2. cybercrime.gov.in पर रिपोर्ट करें या 1930 पर कॉल करें।\n3. स्क्रीनशॉट, ट्रांज़ैक्शन आईडी और चैट लॉग रखें।\n4. पैसे 'वापस दिलाने' के नाम पर किसी को भुगतान न करें; यह अक्सर दूसरा स्कैम होता है।", "mr": "फसवणूक किंवा पैसे गेल्यास त्वरित कृती करा:\n1. आत्ताच बँकेला कॉल करा आणि व्यवहार ब्लॉक किंवा फ्रीज करण्यास सांगा.\n2. cybercrime.gov.in वर तक्रार करा किंवा 1930 वर कॉल करा.\n3. स्क्रीनशॉट, ट्रान्झॅक्शन आयडी आणि चॅट लॉग ठेवा.\n4. पैसे 'परत मिळवून देतो' म्हणणाऱ्याला पैसे देऊ नका; ही अनेकदा दुसरी फसवणूक असते."}, {"k": ["उत्पीड़न", "परेशान", "पीछा", "धमकी", "ब्लैकमेल", "ब्लॅकमेल", "छळ", "त्रास", "पाठलाग", "धमक्या"], "hi": "ऑनलाइन उत्पीड़न या पीछा:\n1. सबूत सहेजें: तारीख वाले स्क्रीनशॉट, लिंक और यूज़रनेम।\n2. प्लेटफ़ॉर्म के रिपोर्ट और ब्लॉक टूल इस्तेमाल करें।\n3. उस व्यक्ति से सीधे बहस न करें; इससे मामला बढ़ सकता है।\n4. cybercrime.gov.in पर रिपोर्ट करें या 1930 पर कॉल करें।\nतुरंत खतरे में हैं? 112 पर कॉल करें।", "mr": "ऑनलाइन छळ किंवा पाठलाग:\n1. पुरावा जतन करा: तारखेसह स्क्रीनशॉट, लिंक आणि युजरनेम.\n2. प्लॅटफॉर्मची रिपोर्ट आणि ब्लॉक साधने वापरा.\n3. त्या व्यक्तीशी थेट वाद घालू नका; प्रकरण वाढू शकते.\n4. cybercrime.gov.in वर तक्रार करा किंवा 1930 वर कॉल करा.\nतात्काळ धोक्यात आहात? 112 वर कॉल करा."}, {"k": ["संदिग्ध", "संशयास्पद", "फिशिंग", "लिंक", "मेसेज", "संदेश", "फेक कॉल", "फर्जी कॉल"], "hi": "संदिग्ध संदेश या कॉल:\n1. लिंक पर क्लिक न करें, अटैचमेंट डाउनलोड न करें, उस नंबर पर वापस कॉल न करें।\n2. संबंधित संस्था के आधिकारिक ऐप या वेबसाइट से खुद जाँच करें।\n3. सबूत के लिए कॉपी सहेजें, फिर भेजने वाले को ब्लॉक और रिपोर्ट करें।", "mr": "संशयास्पद मेसेज किंवा कॉल:\n1. लिंकवर क्लिक करू नका, अटॅचमेंट डाउनलोड करू नका, त्या नंबरवर परत कॉल करू नका.\n2. संबंधित संस्थेच्या अधिकृत अॅप किंवा वेबसाइटवरून स्वतः खात्री करा.\n3. पुराव्यासाठी प्रत जतन करा, मग पाठवणाऱ्याला ब्लॉक करा आणि तक्रार करा."}, {"k": ["मैलवेयर", "मालवेअर", "वायरस", "व्हायरस", "रैनसम", "रॅन्सम", "खंडणी", "फिरौती", "वसूली"], "hi": "मैलवेयर या जबरन वसूली:\n1. डिवाइस को इंटरनेट और वाई-फ़ाई से डिस्कनेक्ट करें।\n2. फिरौती न दें।\n3. किसी दूसरे डिवाइस से स्कैन करें और विशेषज्ञ से सलाह लें।\n4. cybercrime.gov.in पर रिपोर्ट करें या 1930 पर कॉल करें।", "mr": "मालवेअर किंवा खंडणी:\n1. डिव्हाइस इंटरनेट आणि वाय-फायवरून डिस्कनेक्ट करा.\n2. खंडणी देऊ नका.\n3. दुसऱ्या डिव्हाइसवरून स्कॅन करा आणि तज्ज्ञांचा सल्ला घ्या.\n4. cybercrime.gov.in वर तक्रार करा किंवा 1930 वर कॉल करा."}, {"k": ["फोन खो", "फोन गुम", "फोन हरवल", "डेटा लीक", "डेटा चोरी", "डिवाइस खो", "डिव्हाइस हरवल", "लीक"], "hi": "डिवाइस खोने या डेटा लीक पर:\n1. आधिकारिक ट्रैकिंग सेवा से डिवाइस को दूर से लॉक या मिटाएं।\n2. उस पर इस्तेमाल हुए अकाउंट के पासवर्ड बदलें।\n3. अपने अकाउंट और बैंक गतिविधि में कुछ असामान्य दिखे तो ध्यान दें।", "mr": "डिव्हाइस हरवल्यास किंवा डेटा लीक झाल्यास:\n1. अधिकृत ट्रॅकिंग सेवेद्वारे डिव्हाइस दूरस्थपणे लॉक करा किंवा पुसून टाका.\n2. त्यावर वापरलेल्या अकाउंटचे पासवर्ड बदला.\n3. तुमच्या अकाउंट आणि बँक व्यवहारांत काही असामान्य दिसते का ते पाहत रहा."}, {"k": ["ओटीपी", "पिन", "पासवर्ड", "सीवीवी", "सीव्हीव्ही"], "hi": "अपना OTP, UPI पिन, ATM या कार्ड पिन, CVV या पासवर्ड किसी के साथ साझा न करें। बैंक और एजेंसियां इन्हें कभी नहीं मांगतीं। हर अकाउंट के लिए अलग पासफ़्रेज़ रखें और मल्टी-फ़ैक्टर ऑथेंटिकेशन चालू करें।", "mr": "तुमचा OTP, UPI पिन, ATM किंवा कार्ड पिन, CVV किंवा पासवर्ड कोणालाही सांगू नका. बँका आणि संस्था हे कधीही मागत नाहीत. प्रत्येक अकाउंटसाठी वेगळा पासफ्रेज वापरा आणि मल्टी-फॅक्टर ऑथेंटिकेशन सुरू करा."}, {"k": ["साइबर सुरक्षा", "सायबर सुरक्षा", "सुरक्षा सेवा", "ऑडिट", "फॉरेंसिक", "फॉरेन्सिक", "ब्लॉकचेन", "क्रिप्टो", "सीसीटीवी"], "hi": "साइबर सुरक्षा सेवाएं:\n• अनुपालन: VAPT, ऑडिट, जोखिम मूल्यांकन, डेटा सुरक्षा\n• मैनेज्ड सिक्योरिटी: 24/7 निगरानी, एंडपॉइंट, नेटवर्क और क्लाउड सुरक्षा\n• घटना प्रतिक्रिया और फ़ॉरेंसिक\n• ब्लॉकचेन और क्रिप्टो सुरक्षा\n• आवासीय और भौतिक सुरक्षा (CCTV, स्मार्ट होम)\nटीम से बात करने के लिए 'SafeLock से संपर्क करें' चुनें।", "mr": "सायबर सुरक्षा सेवा:\n• अनुपालन: VAPT, ऑडिट, जोखीम मूल्यांकन, डेटा संरक्षण\n• मॅनेज्ड सिक्युरिटी: 24/7 निरीक्षण, एंडपॉइंट, नेटवर्क आणि क्लाउड सुरक्षा\n• घटना प्रतिसाद आणि फॉरेन्सिक\n• ब्लॉकचेन आणि क्रिप्टो सुरक्षा\n• निवासी आणि भौतिक सुरक्षा (CCTV, स्मार्ट होम)\nटीमशी बोलण्यासाठी 'SafeLock शी संपर्क साधा' निवडा."}, {"k": ["वेबसाइट", "वेबसाईट", "सॉफ्टवेयर", "सॉफ्टवेअर", "ऐप", "अॅप", "डेवलपमेंट", "डेव्हलपमेंट", "मोबाइल"], "hi": "वेबसाइट और सॉफ्टवेयर डेवलपमेंट:\n• सुरक्षित वेब एप्लिकेशन\n• मोबाइल ऐप\n• एंटरप्राइज़ प्लेटफ़ॉर्म\nआपको क्या चाहिए, यह पूछताछ फ़ॉर्म या WhatsApp पर बताएं; टीम आपसे संपर्क करेगी।", "mr": "वेबसाइट आणि सॉफ्टवेअर डेव्हलपमेंट:\n• सुरक्षित वेब अॅप्लिकेशन्स\n• मोबाइल अॅप्स\n• एंटरप्राइझ प्लॅटफॉर्म\nतुम्हाला काय हवे ते चौकशी फॉर्म किंवा WhatsApp वर सांगा; टीम तुमच्याशी संपर्क साधेल."}, {"k": ["इंटर्नशिप", "इंटर्न", "कोर्स", "नौकरी", "नोकरी", "करियर", "करिअर", "भर्ती", "भरती", "छात्र", "विद्यार्थी"], "hi": "छात्र इंटर्नशिप 4–6 सप्ताह की होती हैं, लाइव प्रोजेक्ट के अनुभव के साथ, और सभी शाखाओं के छात्रों के लिए खुली हैं। हम सिक्योरिटी एनालिस्ट, पेनेट्रेशन टेस्टर, फ़ॉरेंसिक जाँचकर्ता और फुल-स्टैक डेवलपर की भी भर्ती करते हैं। पूछताछ फ़ॉर्म में सही श्रेणी चुनें।", "mr": "विद्यार्थी इंटर्नशिप 4–6 आठवड्यांची असते, लाइव्ह प्रोजेक्टच्या अनुभवासह, आणि सर्व शाखांतील विद्यार्थ्यांसाठी खुली आहे. आम्ही सिक्युरिटी अॅनालिस्ट, पेनेट्रेशन टेस्टर, फॉरेन्सिक तपासनीस आणि फुल-स्टॅक डेव्हलपर्सचीही भरती करतो. चौकशी फॉर्ममध्ये योग्य प्रकार निवडा."}, {"k": ["प्रशिक्षण", "वर्कशॉप", "कार्यशाळा", "जागरूकता", "कर्मचारी"], "hi": "हम कॉर्पोरेट सुरक्षा जागरूकता वर्कशॉप चलाते हैं जो कर्मचारियों को फ़िशिंग और सोशल इंजीनियरिंग पहचानना सिखाती हैं। पूछताछ फ़ॉर्म में 'कॉर्पोरेट सुरक्षा जागरूकता प्रशिक्षण' चुनें।", "mr": "आम्ही कॉर्पोरेट सुरक्षा जागरूकता कार्यशाळा घेतो, ज्या कर्मचाऱ्यांना फिशिंग आणि सोशल इंजिनिअरिंग ओळखायला शिकवतात. चौकशी फॉर्ममध्ये 'कॉर्पोरेट सुरक्षा जागरूकता प्रशिक्षण' निवडा."}, {"k": ["सेवा", "सेवाएं", "सेवाएँ", "कंपनी", "आपके बारे", "आमच्याबद्दल", "काय करता", "क्या करते"], "hi": "SafeLock CyberTech साइबर सुरक्षा और अनुपालन, मैनेज्ड सिक्योरिटी, घटना प्रतिक्रिया और फ़ॉरेंसिक, ब्लॉकचेन सुरक्षा, कस्टम सॉफ्टवेयर और वेब डेवलपमेंट, आवासीय और भौतिक सुरक्षा, साथ ही प्रशिक्षण और इंटर्नशिप देता है।", "mr": "SafeLock CyberTech सायबर सुरक्षा आणि अनुपालन, मॅनेज्ड सिक्युरिटी, घटना प्रतिसाद आणि फॉरेन्सिक, ब्लॉकचेन सुरक्षा, कस्टम सॉफ्टवेअर आणि वेब डेव्हलपमेंट, निवासी आणि भौतिक सुरक्षा, तसेच प्रशिक्षण आणि इंटर्नशिप देते."}, {"k": ["संपर्क", "फोन नंबर", "पत्ता", "ईमेल", "व्हाट्सएप", "व्हॉट्सअॅप", "समय", "वेळ", "कहाँ", "कुठे", "ऑफिस", "कार्यालय"], "hi": "", "mr": ""}, {"k": ["नमस्ते", "नमस्कार", "हेलो", "हॅलो", "हाय"], "hi": "नमस्ते! मैं हैक हुए अकाउंट, ठगी, उत्पीड़न, संदिग्ध संदेश, मैलवेयर और हमारी सेवाओं में मदद कर सकता हूँ। क्या हुआ है?", "mr": "नमस्कार! मी हॅक झालेली अकाउंट्स, फसवणूक, छळ, संशयास्पद मेसेज, मालवेअर आणि आमच्या सेवांबाबत मदत करू शकतो. काय झाले आहे?"}];
+  KB.forEach(function (e, i) { var x = KBX[i]; if (!x) return; e.k = e.k.concat(x.k); e.t = { hi: x.hi, mr: x.mr }; });
+  var CONTACT = {"en": "Phone / WhatsApp: %PHONE%\nEmail: info@safelocktech.com\nOffice: Office No. 4, Mayuri Palace, Dange Chowk, Pimpri-Chinchwad, Pune 411033\nHours: Mon–Sat 9:00 AM – 10:00 PM, Sun 9:00 AM – 7:00 PM", "hi": "फ़ोन / WhatsApp: %PHONE%\nईमेल: info@safelocktech.com\nकार्यालय: Office No. 4, Mayuri Palace, Dange Chowk, Pimpri-Chinchwad, Pune 411033\nसमय: सोम–शनि सुबह 9:00 – रात 10:00, रवि सुबह 9:00 – शाम 7:00", "mr": "फोन / WhatsApp: %PHONE%\nईमेल: info@safelocktech.com\nकार्यालय: Office No. 4, Mayuri Palace, Dange Chowk, Pimpri-Chinchwad, Pune 411033\nवेळ: सोम–शनि सकाळी 9:00 – रात्री 10:00, रवि सकाळी 9:00 – संध्याकाळी 7:00"}, FALLBACK_T = {"hi": "मैं समझ नहीं पाया। कुछ शब्दों में लिखें, जैसे 'मेरा अकाउंट हैक हो गया', या नीचे से कोई विकल्प चुनें। किसी ख़ास मामले के लिए %PHONE% पर कॉल करें या WhatsApp पर संदेश भेजें।", "mr": "मला समजले नाही. काही शब्दांत लिहा, जसे 'माझे अकाउंट हॅक झाले', किंवा खालील पर्याय निवडा. विशिष्ट प्रकरणासाठी %PHONE% वर कॉल करा किंवा WhatsApp वर संदेश पाठवा."};
+  Object.keys(CONTACT).forEach(function (k) { CONTACT[k] = CONTACT[k].replace('%PHONE%', PHONE); });
+  Object.keys(FALLBACK_T).forEach(function (k) { FALLBACK_T[k] = FALLBACK_T[k].replace('%PHONE%', PHONE); });
+  var FALLBACK = "I'm not sure I understood. Try a few words such as 'my account was hacked' or pick an option below. For a specific case, call " + PHONE + " or message us on WhatsApp.";
+  var log = document.getElementById("log"), chat = document.getElementById("chat"), chatBtn = document.getElementById("chatBtn");
+  var MENU = ["Cybersecurity Services", "Website Development", "Software Development", "IT Courses & Internship", "Contact SafeLock"];
+  var ALIAS = { "Cybersecurity Services": "cybersecurity services", "Website Development": "website development", "Software Development": "software development", "IT Courses & Internship": "internship course", "Contact SafeLock": "contact" };
+  var HELP = ["I've been hacked", "I was scammed", "Harassment", "Suspicious message"];
+
+  function match(t) {
+    for (var i = 0; i < KB.length; i++) for (var j = 0; j < KB[i].k.length; j++) {
+      var key = KB[i].k[j], hit;
+      if (/[^\x00-\x7f]/.test(key)) hit = t.indexOf(key) !== -1;
+      else hit = (key.length <= 3 ? new RegExp("\\b" + key + "\\b") : new RegExp("\\b" + key)).test(t);
+      if (hit) return KB[i];
+    }
+    return null;
+  }
+  function addMsg(text, who, withLinks) {
+    var d = document.createElement("div");
+    d.className = "msg " + (who === "me" ? "me" : "bot");
+    d.textContent = text;
+    if (withLinks) {
+      d.appendChild(document.createElement("br"));
+      var a = document.createElement("a"); a.href = WA; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Chat on WhatsApp";
+      d.appendChild(a);
+    }
+    log.appendChild(d); log.scrollTop = log.scrollHeight;
+  }
+  function ask(text) {
+    if (!text) return;
+    addMsg(text, "me");
+    var t = (ALIAS[text] || text).toLowerCase(), e = match(t);
+    setTimeout(function () {
+      var L = window.SL.lang();
+      if (e && e.a === "contact") addMsg(CONTACT[L], "bot", true);
+      else if (e) addMsg(L !== "en" && e.t && e.t[L] ? e.t[L] : e.a, "bot");
+      else addMsg(L === "en" ? FALLBACK : FALLBACK_T[L], "bot", true);
+    }, 250);
+  }
+  function renderChips() {
+    var box = document.getElementById("chips"); box.innerHTML = "";
+    MENU.concat(HELP).forEach(function (c) {
+      var b = document.createElement("button"); b.type = "button"; b.textContent = c;
+      b.addEventListener("click", function () { ask(c); }); box.appendChild(b);
+    });
+  }
+  function openChat(seed) {
+    chat.classList.add("open"); chatBtn.setAttribute("aria-expanded", "true");
+    if (!log.childElementCount) {
+      addMsg("Hello! Welcome to SafeLock CyberTech. How can we help you today?\n\nI give first-step guidance, not legal or technical advice. In an emergency, call 112.", "bot");
+      renderChips();
+    }
+    if (seed) ask(seed);
+  }
+  function closeChat() { chat.classList.remove("open"); chatBtn.setAttribute("aria-expanded", "false"); }
+  chatBtn.addEventListener("click", function () { chat.classList.contains("open") ? closeChat() : openChat(); });
+  document.getElementById("chatClose").addEventListener("click", closeChat);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && chat.classList.contains("open")) closeChat(); });
+  document.querySelectorAll("[data-open-chat]").forEach(function (b) { b.addEventListener("click", function () { openChat(b.getAttribute("data-open-chat")); }); });
+  document.getElementById("chatForm").addEventListener("submit", function (e) {
+    e.preventDefault(); var i = document.getElementById("chatIn"), v = i.value.trim(); i.value = ""; ask(v);
+  });
+
+  // Auto-open on each visit (once per browser session, so it won't reopen after being closed)
+  var seen = false; try { seen = sessionStorage.getItem("slChat") === "1"; } catch (e) {}
+  if (!seen) setTimeout(function () { if (!chat.classList.contains("open")) openChat(); try { sessionStorage.setItem("slChat", "1"); } catch (e) {} }, 1500);
+
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var text = b.getAttribute("data-copy");
+      var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1500); };
+      try { navigator.clipboard.writeText(text).then(done, function () { b.textContent = text; }); } catch (e) { b.textContent = text; }
+    });
+  });
+
+  var enq = document.getElementById("enq"), msg = document.getElementById("enqMsg");
+  var send = document.getElementById("enqSend");
+  function build() {
+    var f = enq, name = f.name.value.trim(), phone = f.phone.value.trim(), cat = f.category.value, body = f.message.value.trim();
+    msg.style.color = "#fca5a5";
+    if (!name || !cat || body.length < 10) { msg.textContent = "Please add your name, a category and a message of at least 10 characters."; return null; }
+    if (/\b(otp|upi pin|atm pin|card pin|cvv)\b/i.test(body)) { msg.textContent = "For your safety, do not include OTPs, PINs or card details."; return null; }
+    var text = "Enquiry from website\nName: " + name + (phone ? "\nPhone: " + phone : "") + "\nCategory: " + cat + "\n\n" + body;
+    return WA + "?text=" + encodeURIComponent(text);
+  }
+  // The button is a real link, so WhatsApp opens on the tap itself (works inside preview frames too)
+  send.addEventListener("click", function (e) {
+    if (enq.website.value) { e.preventDefault(); return; }
+    var url = build();
+    if (!url) { e.preventDefault(); return; }
+    send.href = url; msg.style.color = "inherit"; msg.textContent = "Opening WhatsApp… press send there to reach our team.";
+  });
+  enq.addEventListener("submit", function (e) { e.preventDefault(); send.click(); });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var SEV = { Critical: "#f43f5e", High: "#f59e0b", Medium: "#3b82f6", Low: "#22c55e" };
+  var W = { Critical: 4, High: 3, Medium: 2, Low: 1 };
+  var NEXT = {
+    "UPI fraud": "Call the bank now to freeze the transfer, then report on 1930 and cybercrime.gov.in.",
+    "Phishing": "Do not click further. Capture the message, reset affected passwords, block the sender.",
+    "Account takeover": "Reset the password from a trusted device, end all sessions, enable multi-factor authentication.",
+    "Investment scam": "Stop all payments, keep chats and receipts, report on 1930 and tell the bank.",
+    "Harassment": "Save dated screenshots, use platform report tools, report at cybercrime.gov.in.",
+    "Ransomware": "Isolate the device from the network, do not pay, preserve logs and call a responder.",
+    "Fake job offer": "Cut contact, never pay 'registration fees', report the listing and the sender.",
+    "SIM swap": "Contact the mobile operator to block the SIM, alert the bank, change account passwords.",
+    "Crypto scam": "Record wallet addresses and transaction IDs, report on 1930, avoid 'recovery' services."
+  };
+  var C = [
+    ["FC-1041","UPI fraud","High","Bank notified"],["FC-1042","Phishing","Medium","Investigating"],["FC-1043","Account takeover","High","Investigating"],
+    ["FC-1044","Investment scam","High","Reported to 1930"],["FC-1045","Harassment","Medium","New"],["FC-1046","Ransomware","Critical","Investigating"],
+    ["FC-1047","Fake job offer","Medium","Resolved"],["FC-1048","Phishing","Low","Resolved"],["FC-1049","UPI fraud","High","New"],
+    ["FC-1050","SIM swap","High","Reported to 1930"],["FC-1051","Crypto scam","Critical","New"],["FC-1052","Account takeover","Medium","Resolved"]
+  ].map(function (c) { return { id: c[0], type: c[1], sev: c[2], st: c[3] }; });
+  var $ = function (id) { return document.getElementById(id); };
+  var sel = null, filter = "All";
+  var open = C.filter(function (c) { return c.st !== "Resolved"; });
+
+  function count(el, to) {
+    var t0 = performance.now();
+    (function step(t) { var p = Math.min(1, (t - t0) / 1100); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); })(t0);
+  }
+  var hi = open.filter(function (c) { return c.sev === "Critical" || c.sev === "High"; }).length;
+  var score = Math.round(100 * open.reduce(function (a, c) { return a + W[c.sev]; }, 0) / (C.length * 4) * 2.2);
+  score = Math.min(95, score);
+  var started = false;
+  function startDash() {
+    if (started) return; started = true;
+    count($("k1"), C.length); count($("k2"), open.length); count($("k3"), hi); count($("k4"), C.length - open.length);
+    count({ set textContent(v) { $("gv").textContent = v + "%"; } }, score);
+    $("gauge").querySelectorAll(".wave").forEach(function (w) { w.style.setProperty("--lvl", (100 - score * 0.9 - 6) + "%"); });
+    document.querySelectorAll(".fill").forEach(function (f) { f.style.width = f.getAttribute("data-w") + "%"; });
+  }
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { startDash(); o.disconnect(); } }, { threshold: .15 }).observe($("dashboard"));
+  else startDash();
+
+  // radar
+  open.forEach(function (c, i) {
+    var a = ((i * 137.5) % 360) * Math.PI / 180, r = 22 + ((i * 23) % 62);
+    var b = document.createElement("button"); b.type = "button"; b.className = "blip"; b.dataset.id = c.id;
+    b.style.left = (50 + r * Math.cos(a) / 2 * 1) + "%"; b.style.top = (50 + r * Math.sin(a) / 2) + "%";
+    b.style.setProperty("--c", SEV[c.sev]); b.style.animationDelay = (i * .3) + "s";
+    b.setAttribute("aria-label", c.id + " " + c.type + ", " + c.sev); b.addEventListener("click", function () { select(c.id); });
+    $("radar").appendChild(b);
+  });
+
+  // filters + rows
+  ["All", "New", "Investigating", "Bank notified", "Reported to 1930", "Resolved"].forEach(function (f) {
+    var b = document.createElement("button"); b.type = "button"; b.textContent = f; if (f === "All") b.className = "on";
+    b.addEventListener("click", function () { filter = f; document.querySelectorAll("#filters button").forEach(function (x) { x.classList.toggle("on", x === b); }); rows(); });
+    $("filters").appendChild(b);
+  });
+  function rows() {
+    var box = $("rows"); box.innerHTML = "";
+    C.filter(function (c) { return filter === "All" || c.st === filter; }).forEach(function (c) {
+      var b = document.createElement("button"); b.type = "button"; b.className = "row" + (sel === c.id ? " sel" : "");
+      b.innerHTML = '<code></code><span></span><span class="pill"></span><span class="pill"></span>';
+      var k = b.children; k[0].textContent = c.id; k[1].textContent = c.type;
+      k[2].textContent = c.sev; k[2].style.setProperty("--c", SEV[c.sev]); k[3].textContent = c.st; k[3].style.setProperty("--c", "#9fb0d0");
+      b.addEventListener("click", function () { select(c.id); }); box.appendChild(b);
+    });
+    if (!box.children.length) box.textContent = "No cases in this status.";
+  }
+  function select(id) {
+    sel = id; var c = C.filter(function (x) { return x.id === id; })[0]; if (!c) return;
+    var d = $("detail"); d.innerHTML = "<h4></h4><p class='muted' style='margin:0 0 8px'></p><p style='margin:0'><strong>Next step:</strong> <span></span></p>";
+    d.children[0].textContent = c.id + " · " + SL.tr(c.type); d.children[1].textContent = SL.tr(c.sev) + " " + SL.tr("severity") + " · " + SL.tr(c.st); d.children[2].lastChild.textContent = NEXT[c.type];
+    document.querySelectorAll(".blip").forEach(function (b) { b.classList.toggle("sel", b.dataset.id === id); });
+    rows();
+  }
+  rows(); select(C[0].id);
+  document.addEventListener("sl-lang", function () { select(sel || C[0].id); });
+
+  // chart
+  var types = {}; C.forEach(function (c) { types[c.type] = (types[c.type] || 0) + 1; });
+  var max = Math.max.apply(null, Object.keys(types).map(function (k) { return types[k]; }));
+  Object.keys(types).sort(function (a, b) { return types[b] - types[a]; }).forEach(function (k) {
+    var r = document.createElement("div"); r.className = "crow";
+    r.innerHTML = "<span></span><div class='track'><div class='fill'></div></div><b></b>";
+    r.children[0].textContent = k; r.children[2].textContent = types[k]; r.querySelector(".fill").setAttribute("data-w", Math.round(types[k] / max * 100));
+    $("chart").appendChild(r);
+  });
+
+  // robot eyes + card glow follow the pointer (batched: one update per display frame)
+  var mx = 0, my = 0, mt = null, pending = 0, robotOn = true;
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { robotOn = e[0].isIntersecting; }).observe($("robot"));
+  function pointerFrame() {
+    pending = 0;
+    if (robotOn) {
+      var s = $("robot").getBoundingClientRect(), cx = s.left + s.width / 2, cy = s.top + s.height * .4;
+      var dx = mx - cx, dy = my - cy, d = Math.max(1, Math.hypot(dx, dy)), m = Math.min(6, d / 40);
+      var t = "translate(" + (dx / d * m) + "px," + (dy / d * m) + "px)"; $("p1").style.transform = t; $("p2").style.transform = t;
+    }
+    var g = mt && mt.closest && mt.closest(".card,.glass");
+    if (g) { var r = g.getBoundingClientRect(); g.style.setProperty("--mx", (mx - r.left) + "px"); g.style.setProperty("--my", (my - r.top) + "px"); }
+  }
+  document.addEventListener("pointermove", function (e) {
+    if (e.pointerType === "touch") return;
+    mx = e.clientX; my = e.clientY; mt = e.target;
+    if (!pending) pending = requestAnimationFrame(pointerFrame);
+  }, { passive: true });
+
+  // demo scan (time-based, so it runs the same at 60, 120 or 144 Hz)
+  var busy = false;
+  $("scanBtn").addEventListener("click", function () {
+    if (busy) return; busy = true; var bar = $("scanBar"), rad = $("radar"), t0 = performance.now(), DUR = 2250;
+    rad.classList.add("fast"); $("stText").textContent = "Scanning (demo)\u2026";
+    (function step(t) {
+      var p = Math.min(1, (t - t0) / DUR);
+      bar.style.transform = "scaleX(" + p + ")";
+      if (p < 1) { requestAnimationFrame(step); return; }
+      rad.classList.remove("fast");
+      $("stText").textContent = SL.tr("Demo scan complete:") + " " + open.length + " " + SL.tr("open sample cases");
+      setTimeout(function () { bar.style.transform = "scaleX(0)"; busy = false; }, 1500);
+    })(t0);
+  });
+
+  // simulated feed
+  var EV = [["Phishing link flagged","#3b82f6"],["Suspicious login attempt blocked","#f59e0b"],["UPI fraud report logged","#f59e0b"],["Ransomware signature matched","#f43f5e"],["Case FC-1045 updated","#22c55e"],["Spoofed sender detected","#3b82f6"],["Evidence file archived","#22c55e"]];
+  function ev() {
+    var e = EV[Math.floor(Math.random() * EV.length)], li = document.createElement("li"), t = new Date();
+    li.style.setProperty("--c", e[1]); li.innerHTML = "<time></time><span></span>";
+    li.children[0].textContent = t.toLocaleTimeString(); li.children[1].textContent = e[0];
+    var f = $("feed"); f.insertBefore(li, f.firstChild); while (f.children.length > 5) f.removeChild(f.lastChild);
+  }
+  ev(); ev(); setInterval(ev, 3800);
+
+  // liquid ripple on buttons
+  document.addEventListener("pointerdown", function (e) {
+    var b = e.target.closest && e.target.closest(".btn,.chips button,.quick button,.chips2 button"); if (!b) return;
+    var r = b.getBoundingClientRect(), s = Math.max(r.width, r.height) * 2, i = document.createElement("span");
+    i.className = "rip"; i.style.cssText = "width:" + s + "px;height:" + s + "px;left:" + (e.clientX - r.left - s / 2) + "px;top:" + (e.clientY - r.top - s / 2) + "px";
+    b.appendChild(i); setTimeout(function () { i.remove(); }, 700);
+  });
+})();
+</script>
+<script>
+(function () {
+  if (!/[?&]fps\b/.test(location.search)) return;
+  var el = document.createElement("div");
+  el.style.cssText = "position:fixed;left:12px;bottom:12px;z-index:99;padding:6px 10px;border-radius:10px;background:rgba(0,0,0,.7);color:#22d3ee;font:600 12px/1 Inter,monospace";
+  document.body.appendChild(el);
+  var n = 0, t0 = performance.now();
+  (function f(t) { n++; if (t - t0 >= 500) { el.textContent = Math.round(n * 1000 / (t - t0)) + " fps"; n = 0; t0 = t; } requestAnimationFrame(f); })(t0);
+})();
+</script>
+</body>
+</html>
